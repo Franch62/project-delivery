@@ -166,7 +166,7 @@
 body {
   font-family: "Poppins", sans-serif;
   background-color: #83606070;
-  background-image: url("/assets/img/abendbrot-939435_1280.jpg");
+  background-image: url("../../assets/img/abendbrot-939435_1280.jpg");
   background-size: contain;
   color: #333;
   display: flex;

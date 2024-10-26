@@ -91,6 +91,12 @@ async function loadProductsByCategory() {
       items.forEach((item) => {
         const productCard = document.createElement("div");
         productCard.classList.add("product-card");
+        const textCard = document.createElement("div");
+        textCard.classList.add("text-card");
+        const subCard = document.createElement("sub-card");
+        subCard.classList.add("sub-card");
+        const btnProducts = document.createElement("btn-products");
+        btnProducts.classList.add("btn-products");
 
         const productName = document.createElement("h2");
         productName.textContent = item.name;
@@ -108,12 +114,13 @@ async function loadProductsByCategory() {
 
         const productPrice = document.createElement("p");
         productPrice.textContent = `Preço: R$ ${item.price}`;
-
-        productCard.appendChild(productName);
-        productCard.appendChild(productImage);
-        productCard.appendChild(productDescription);
-        productCard.appendChild(productPrice);
-
+        
+        textCard.appendChild(productName);
+        textCard.appendChild(productDescription);
+        textCard.appendChild(productPrice);
+        subCard.appendChild(textCard);
+        subCard.appendChild(productImage);
+        productCard.appendChild(subCard)
         if (token) {
           const editButton = document.createElement("button");
           editButton.textContent = "Editar";
@@ -121,7 +128,7 @@ async function loadProductsByCategory() {
           editButton.addEventListener("click", () => {
             window.location.href = `/pages/edita-produto/editProduct.html?id=${item._id}`;
           });
-
+          
           const deleteProductButton = document.createElement("button");
           deleteProductButton.textContent = "Excluir";
           deleteProductButton.classList.add("delete-product-button");
@@ -137,9 +144,11 @@ async function loadProductsByCategory() {
             }
           });
 
-          productCard.appendChild(editButton);
-          productCard.appendChild(deleteProductButton);
+          btnProducts.appendChild(editButton);
+          btnProducts.appendChild(deleteProductButton);
+          productCard.appendChild(btnProducts)
         }
+
 
         categoryElement.appendChild(productCard);
       });
@@ -153,6 +162,7 @@ async function loadProductsByCategory() {
       "<p>Erro ao carregar produtos. Tente novamente mais tarde.</p>";
   }
 }
+
 
 async function deleteProduct(productId, token) {
   try {
@@ -198,7 +208,16 @@ async function deleteCategory(categoryId, token) {
     console.error("Erro ao excluir a categoria:", error);
     return false;
   }
+
+  function addToCart(item) {
+    alert(`${item.name} foi adicionado ao carrinho!`);
+    // Aqui, você pode incluir a lógica para manipular o carrinho
+  }
+  
+
 }
+
+
 
 window.onload = () => {
   loadProductsByCategory();

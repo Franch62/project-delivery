@@ -3,43 +3,122 @@
   flex-direction: row;
   margin: 5px;
   padding: 10px;
-  height: 15vh;
+  height: 100vh;
 }
 
+/* Configurações principais */
 .product-card {
-  border: 1px solid #ccc;
-  border-radius: 0.5rem;
-  padding: 15px;
-  gap: 0.8rem;
-  max-width: 380px;
-  margin: 15px 0;
+  padding: 0 2rem;
+  max-width: 580px;
+  margin: 1rem;
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
   align-items: center;
-  height: auto;
-  transition: 0.2s;
-  box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px,
+    rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+}
+.sub-card {
+  border: 1px solid #ccc;
+  border-radius: 0.5rem;
+  max-width: 580px;
+  margin: 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.text-card {
+  display: flex;
+  flex-direction: column;
+  padding: 1rem;
+  text-align: left;
+}
+.text-card p {
+  text-overflow: ellipsis;
+  text-anchor: middle;
 }
 
 .product-card:hover {
-    transform: scale(1.05); 
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); 
-  }
+  transform: scale(1.05);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
 
 .product-card img {
-  max-width: 300px;
-}
-h1 {
-  color: #333;
-  border-bottom: 2px solid #333;
-  margin-bottom: 20px;
+  max-width: 50%;
+  border-radius: 0.5rem;
+  transition: opacity 0.3s ease;
+  margin: 0 1rem;
 }
 
-#add-buttons{
+.product-card:hover img {
+  opacity: 0.9;
+}
+
+.product-card h2 {
+  color: #333;
+  margin: 10px 0;
+}
+
+.product-card p {
+  color: #666;
+  text-align: center;
+}
+
+.product-price {
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 1rem;
+}
+
+/* Botão de Comprar */
+.add-to-cart-button {
+  padding: 0.8rem;
+  width: 100%;
+  background-color: #28a745;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  margin-top: 1rem;
+}
+
+.add-to-cart-button:hover {
+  background-color: #218838;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+  .product-card {
+    max-width: 100%;
+  }
+
+  .main-content {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  #products-container {
+    flex-direction: column;
+    align-items: cent;
+  }
+}
+#add-buttons {
   width: 100%;
   display: flex;
   flex-direction: column;
   gap: -2rem;
+}
+
+.btn-products {
+  width: 100%;
+  padding: 1rem;
+  display: flex;
+  gap: 0.5rem;
 }
 
 #products-container {

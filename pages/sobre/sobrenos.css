@@ -1,0 +1,238 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    color: #000000;
+    line-height: 1.6;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* Header */
+header {
+    background-color: #f8f8f8;
+    padding: 20px 0;
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+}
+
+nav ul li {
+    margin: 0 15px;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: #333;
+    font-weight: bold;
+}
+
+.orcamento-btn {
+    background-color: #ccc;
+    padding: 10px 20px;
+    border-radius: 5px;
+    text-decoration: none;
+    color: #333;
+}
+
+/* Seção Sobre Nós */
+.sobre-nos {
+    padding: 40px 0;
+    background-color: #e1ffe2;
+}
+
+h1 {
+    font-size: 36px;
+    margin-bottom: 20px;
+}
+
+.breadcrumb {
+    margin-bottom: 20px;
+}
+
+.breadcrumb a {
+    text-decoration: none;
+    color: #999;
+}
+
+.breadcrumb span {
+    color: #333;
+}
+
+.content {
+    display: flex;
+    align-items: flex-start;
+}
+
+.image img {
+    width: 400px;
+    margin-right: 40px;
+}
+
+.text h2 {
+    font-size: 28px;
+    margin-bottom: 20px;
+}
+
+.text p {
+    margin-bottom: 20px;
+}
+
+.btn {
+    display: inline-block;
+    background-color: #7a7a5b;
+    color: #fff;
+    padding: 10px 20px;
+    text-decoration: none;
+    border-radius: 5px;
+}
+
+/* Seção Fale Conosco */
+
+
+/* Informações de Contato */
+
+ .contact-info {
+    max-width: 200rem;
+    margin: 0 rem;
+    padding: 20px;
+    background-color: #fffebf;
+}
+
+.contact-info h2, .contact-info h3 {
+    color: #777;
+    margin-bottom: 20px;
+}
+
+.contact-info ul {
+    list-style: none;
+}
+
+.contact-info ul li {
+    display: flex;
+    align-items:end;
+    margin-bottom: 20px;
+}
+
+.contact-info ul li img {
+    margin-right: 10px;
+}
+
+/* fooster */
+footer {
+    background: #886868;
+    padding: 1rem;
+  }
+  
+  .footer-top {
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  .footer-icons {
+    display: flex;
+    align-items: center;
+  }
+  
+  footer span {
+    color: #3a3030;
+  }
+  
+  /* Redes sociais */
+  .wrapper {
+    display: flex;
+    list-style: none;
+    justify-content: flex-end;
+    height: 100px;
+  }
+  
+  .wrapper .icon {
+    position: relative;
+    width: 50px;
+    height: 50px;
+    font-size: 18px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 10px;
+    box-shadow: 0 10px 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  .wrapper .tooltip {
+    position: absolute;
+    top: 0;
+    font-size: 14px;
+    color: var(--light-color);
+    padding: 5px 8px;
+    border-radius: 5px;
+    opacity: 0;
+    transition: all 0.3s ease;
+  }
+  
+  .wrapper .tooltip::before {
+    content: "";
+    position: absolute;
+    height: 8px;
+    width: 8px;
+    bottom: -3px;
+    background: var(--light-color);
+    left: 50%;
+    transform: translateX(-50%) rotate(45deg);
+  }
+  
+  .wrapper .icon:hover .tooltip {
+    top: -45px;
+    opacity: 1;
+  }
+  
+  .wrapper .facebook:hover,
+  .wrapper .facebook:hover .tooltip,
+  .wrapper .facebook:hover .tooltip::before {
+    background: #1877f2;
+  }
+  
+  .wrapper .instagram:hover,
+  .wrapper .instagram:hover .tooltip,
+  .wrapper .instagram:hover .tooltip::before {
+    background: #e4405f;
+  }
+  
+  /* Responsividade */
+  @media (max-width: 768px) {
+    header ul {
+      gap: 2rem;
+      padding: 1rem;
+    }
+  
+    .features {
+      flex-direction: column;
+      padding: 1rem;
+    }
+  
+    section li {
+      width: 100%;
+    }
+  }
+  
+
+  
+

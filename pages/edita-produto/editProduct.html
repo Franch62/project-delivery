@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Editar Produto</title>
+  </head>
+  <body>
+    <h1>Editar Produto</h1>
+    <form id="edit-product-form" enctype="multipart/form-data">
+      <label for="product-name">Nome:</label>
+      <input type="text" id="product-name" name="product-name" />
+      <br />
+
+      <label for="product-description">Descrição:</label>
+      <input type="text" id="product-description" name="product-description" />
+      <br />
+
+      <label for="product-price">Preço:</label>
+      <input type="number" id="product-price" name="product-price" />
+      <br />
+
+      <label for="product-category">Categoria:</label>
+      <select id="product-category"></select>
+      <br />
+
+      <label for="product-image">Imagem:</label>
+      <input type="file" id="product-image" name="product-image" />
+      <br />
+
+      <!-- Pré-visualização da imagem atual -->
+      <img id="image-preview" src="" alt="Imagem atual do produto" style="max-width: 200px; display: none;" />
+      <br />
+
+      <input
+        type="hidden"
+        id="current-image-url"
+        name="current_image_url"
+        value=""
+      />
+      <br />
+      <div id="loading-spinner" style="display: none;">Salvando...</div>
+
+      <input type="submit" value="Salvar Alterações" />
+    </form>
+
+    <div id="edit-result"></div>
+
+    <script src="editProduct.js"></script>
+  </body>
+</html>

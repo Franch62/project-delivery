@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/index.css">
+    <link rel="stylesheet" href="/pages/produtos/product.css">
+    <title>Cardápio</title>
+</head>
+<body>
+    <header>
+        <div class="logo">
+          <img src="/assets/img/logo.png" width="100" alt="logo">
+        </div>
+        <a href="/pages/autenticacao/login.html" class="btnLogin" id="btnLogin">Cadastro/Login</a>
+      </header>
+
+      <body>
+
+        <div class="banner">
+          <div class="slider">
+            <img src="/assets/img/Suco design4.png" alt="Imagem 1">
+            <img src="/assets/img/artesuco3.png" alt="Imagem 2">
+            <img src="/assets/img/artesuco3.png" alt="Imagem 3">
+            <img src="/assets/img/Suco design4.png"  alt="Imagem 4">
+          </div>
+          <button id="id1" class="prev button-carro">◀</button>
+          <button id="id2" class="next button-carro">▶</button>
+        </div>
+    
+
+        <main class="main-content" id="main-content">
+          <div id="products-container"></div>
+          <div id="add-buttons"></div>
+        </main>
+        <!-- Script para carregar os produtos -->
+        <script src="/pages/produtos/products.js"></script>
+        <script src="/public/script.js"></script>
+
+</body>
+</html>

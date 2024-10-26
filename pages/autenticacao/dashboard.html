@@ -1,0 +1,24 @@
+<!-- dashboard.html -->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dashboard</title>
+  </head>
+  <body>
+    <h1>Welcome to the Dashboard</h1>
+    <p>You have successfully logged in!</p>
+    <button onclick="logout()">Logout</button>
+
+    <script>
+      function logout() {
+        // Limpar todos os dados armazenados no localStorage
+        localStorage.clear();
+
+        // Você pode adicionar lógica para limpar o token ou qualquer outra informação de sessão
+        window.location.href = "../../index.html"; // Redireciona para a página de login
+      }
+    </script>
+  </body>
+</html>

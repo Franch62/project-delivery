@@ -1,4 +1,4 @@
-const API_URL = "http://localhost:3000/api/auth";
+const API_URL = "https://api-order-menu.vercel.app/api/auth";
 
 async function register() {
   const username = document.getElementById("reg-username").value;

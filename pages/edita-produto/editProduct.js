@@ -11,7 +11,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 
   
   try {
-    const response = await fetch(`http://localhost:3000/api/menu/${id}`, {
+    const response = await fetch(`https://api-order-menu.vercel.app/api/menu/${id}`, {
       headers: {
         "Authorization": `Bearer ${token}`,
       },
@@ -25,7 +25,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 
 
     const categoryResponse = await fetch(
-      "http://localhost:3000/api/categories/",
+      "https://api-order-menu.vercel.app/api/categories/",
       {
         headers: {
           "Authorization": `Bearer ${token}`, 
@@ -80,7 +80,7 @@ document
     const token = localStorage.getItem("token"); 
 
     try {
-      const response = await fetch(`http://localhost:3000/api/menu/${id}`, {
+      const response = await fetch(`https://api-order-menu.vercel.app/api/menu/${id}`, {
         method: "PUT",
         headers: {
           "Authorization": `Bearer ${token}`,

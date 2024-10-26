@@ -33,7 +33,7 @@ document.addEventListener("DOMContentLoaded", () => {
         return;
       }
   
-      const response = await fetch("http://localhost:3000/api/categories/", {
+      const response = await fetch("https://api-order-menu.vercel.app/api/categories/", {
         method: "POST",
         headers: {
           'Authorization': `Bearer ${token}`, 

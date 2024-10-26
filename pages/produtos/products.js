@@ -24,7 +24,7 @@ async function loadProductsByCategory() {
       
     }
 
-    const response = await fetch("http://localhost:3000/api/menu/", {
+    const response = await fetch("https://api-order-menu.vercel.app/api/menu/", {
       headers: {
         "Authorization": `Bearer ${token}`,
       },
@@ -102,7 +102,7 @@ async function loadProductsByCategory() {
         productName.textContent = item.name;
 
         const productImage = document.createElement("img");
-        const srcImage = `http://localhost:3000/api/${item.image_url}`.replace(
+        const srcImage = `https://api-order-menu.vercel.app/api/${item.image_url}`.replace(
           "\\",
           "/"
         );
@@ -167,7 +167,7 @@ async function loadProductsByCategory() {
 async function deleteProduct(productId, token) {
   try {
     const response = await fetch(
-      `http://localhost:3000/api/menu/${productId}`,
+      `https://api-order-menu.vercel.app/api/menu/${productId}`,
       {
         method: "DELETE",
         headers: {
@@ -190,7 +190,7 @@ async function deleteProduct(productId, token) {
 async function deleteCategory(categoryId, token) {
   try {
     const response = await fetch(
-      `http://localhost:3000/api/categories/${categoryId}`,
+      `https://api-order-menu.vercel.app/api/categories/${categoryId}`,
       {
         method: "DELETE",
         headers: {

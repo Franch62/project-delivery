@@ -121,25 +121,6 @@ header .btn:hover {
 }
 
 
-#main-content a {
-  margin: 1.5rem;
-  padding: 1.2rem;
-  width: 12rem;
-  border-radius: 5px;
-  transition: 0.2s;
-  border: 2px solid #fc123d;
-  background-color: var(--primary-color);
-  color: var(--light-color);
-  text-align: center;
-  justify-content: center;
-  text-decoration: none;
-}
-
-#main-content a:hover {
-  background-color: #d8193c;
-  border: 2px solid #dd194a;
-}
-
 #btnLogin {
   margin: 1.5rem;
   padding: 20px;

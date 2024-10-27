@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./pages/produtos/index.css">
     <link rel="stylesheet" href="./pages/produtos/product.css">
+    <link rel="stylesheet" href="./pages/produtos/modalHandler.css">
     <title>Cardápio</title>
 </head>
 <body>
@@ -32,7 +33,19 @@
         <main class="main-content" id="main-content">
           <div id="products-container"></div>
           <div id="add-buttons"></div>
+
+          <div class="modal-overlay" id="productModal">
+            <div class="modal-content">
+              <button class="modal-close" onclick="closeModal()">✖</button>
+              <div id="modalProductDetails">
+                <!-- Os detalhes do produto irão aparecer aqui -->
+              </div>
+            </div>
+          </div>
+          
         </main>
+
+
         <!-- Script para carregar os produtos -->
         <script src="./pages/produtos/products.js"></script>
         <script src="./public/script.js"></script>

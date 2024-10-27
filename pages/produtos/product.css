@@ -1,14 +1,33 @@
-.main-content {
+#btn-main {
+  margin: 1.5rem;
+  padding: 1.2rem;
+  width: 12rem;
+  border-radius: 5px;
+  transition: 0.2s;
+  border: 2px solid #fc123d;
+  background-color: var(--primary-color);
+  color: var(--light-color);
+  text-align: center;
   display: flex;
-  flex-direction: row;
-  margin: 5px;
-  padding: 10px;
-  height: 100vh;
+  justify-content: center;
+  text-decoration: none;
+}
+
+#btn-main:hover {
+  background-color: #d8193c;
+  border: 2px solid #dd194a;
 }
 
 /* Configurações principais */
+.product-item {
+  text-decoration: none;
+  color: inherit;
+  display: block;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
 .product-card {
-  padding: 0 2rem;
+  padding: 1.5rem;
   max-width: 580px;
   margin: 1rem;
   display: flex;
@@ -19,25 +38,22 @@
   box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px,
     rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
 }
+
 .sub-card {
   border: 1px solid #ccc;
   border-radius: 0.5rem;
-  max-width: 580px;
-  margin: 1rem;
+  width: 100%;
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
 
-.text-card {
+.product-media {
   display: flex;
   flex-direction: column;
   padding: 1rem;
   text-align: left;
-}
-.text-card p {
-  text-overflow: ellipsis;
-  text-anchor: middle;
+  width: 60%;
 }
 
 .product-card:hover {
@@ -46,10 +62,9 @@
 }
 
 .product-card img {
-  max-width: 50%;
+  width: 40%;
   border-radius: 0.5rem;
   transition: opacity 0.3s ease;
-  margin: 0 1rem;
 }
 
 .product-card:hover img {
@@ -63,7 +78,7 @@
 
 .product-card p {
   color: #666;
-  text-align: center;
+  text-align: left;
 }
 
 .product-price {
@@ -104,14 +119,15 @@
 
   #products-container {
     flex-direction: column;
-    align-items: cent;
+    align-items: center;
   }
 }
+
 #add-buttons {
   width: 100%;
   display: flex;
   flex-direction: column;
-  gap: -2rem;
+  gap: 0.5rem;
 }
 
 .btn-products {
@@ -124,6 +140,7 @@
 #products-container {
   display: flex;
   gap: 20px;
+  flex-wrap: wrap;
 }
 
 .edit-button {

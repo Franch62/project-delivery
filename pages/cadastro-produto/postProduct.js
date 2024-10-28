@@ -54,7 +54,7 @@ async function addProduct(event) {
   formData.append("price", price);
   formData.append("category", category);
   if (image) {
-    formData.append("image_url", image); 
+    formData.append(`image_url`, image); 
   }
 
   try {

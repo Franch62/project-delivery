@@ -4,7 +4,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 
 async function loadCategories() {
   try {
-    const token = localStorage.getItem("token"); 
+    const token = sessionStorage.getItem("token"); 
     if (!token) {
       alert("Você precisa estar autenticado para carregar as categorias.");
       window.location.href = "/autenticacao/login.html"; 
@@ -58,7 +58,7 @@ async function addProduct(event) {
   }
 
   try {
-    const token = localStorage.getItem("token"); 
+    const token = sessionStorage.getItem("token"); 
     if (!token) {
       alert("Você precisa estar autenticado para adicionar produtos.");
       window.location.href = "login.html"; 

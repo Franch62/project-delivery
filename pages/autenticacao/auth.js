@@ -31,7 +31,7 @@ async function login() {
 
   const data = await response.json();
   if (data.token) {
-    localStorage.setItem("token", data.token);
+    sessionStorage.setItem("token", data.token);
     // Redireciona para dashboard.html se o login for bem-sucedido
     window.location.href = "../../index.html";
   } else {

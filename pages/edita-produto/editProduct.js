@@ -2,7 +2,7 @@ document.addEventListener("DOMContentLoaded", async () => {
   const urlParams = new URLSearchParams(window.location.search);
   const id = urlParams.get("id");
 
-  const token = localStorage.getItem("token"); 
+  const token = sessionStorage.getItem("token"); 
   if (!token) {
     alert("Você precisa estar autenticado para editar produtos.");
     window.location.href = "/pages/autenticacao/login.html"; 
@@ -77,7 +77,7 @@ document
       formData.append("image_url", currentImageUrl);
     }
 
-    const token = localStorage.getItem("token"); 
+    const token = sessionStorage.getItem("token"); 
 
     try {
       const response = await fetch(`https://api-order-menu.vercel.app/api/menu/${id}`, {

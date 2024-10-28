@@ -1,12 +1,12 @@
 async function loadProductsByCategory() {
   try {
-    const token = localStorage.getItem("token");
+    const token = sessionStorage.getItem("token");
 
     if (token) {
       const btnLogout = document.getElementById("btnLogin");
       btnLogout.textContent = "Log Out";
       btnLogout.onclick = function LogOut() {
-        localStorage.removeItem("token");
+        sessionStorage.removeItem("token");
         window.location.href = `../../index.html?${Date.now()}`;
       };
 
@@ -223,7 +223,7 @@ async function deleteCategory(categoryId, token) {
 
 // Função para abrir o modal
 function openModal(product) {
-  const token = localStorage.getItem("token"); // Verifica se o usuário está autenticado
+  const token = sessionStorage.getItem("token"); // Verifica se o usuário está autenticado
   const modal = document.getElementById("productModal");
   const modalContent = document.getElementById("modalProductDetails");
   const srcImage =

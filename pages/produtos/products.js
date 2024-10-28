@@ -9,6 +9,7 @@ async function loadProductsByCategory() {
         localStorage.removeItem("token");
         window.location.href = `../../index.html?${Date.now()}`;
       };
+
       const divButtons = document.getElementById("add-buttons");
       const btnAddProduct = document.createElement("a");
       btnAddProduct.classList.add("btnAddProduct");
@@ -39,7 +40,6 @@ async function loadProductsByCategory() {
     }
 
     const products = await response.json();
-
     const productsContainer = document.getElementById("products-container");
     productsContainer.innerHTML = "";
 
@@ -60,37 +60,76 @@ async function loadProductsByCategory() {
       }
     });
 
-    for (const [categoryId, { name: categoryName, items }] of Object.entries(
-      productsByCategory
-    )) {
+    for (const [categoryId, { name: categoryName, items }] of Object.entries(productsByCategory)) {
       const categoryElement = document.createElement("div");
-      const categoryTitle = document.createElement("h1");
-      categoryTitle.textContent = categoryName;
+      categoryElement.classList.add("category");
+
+      // Criar título da categoria com botão de excluir e seta
+      const categoryTitle = document.createElement("div");
+      categoryTitle.classList.add("category-title");
+
+      
+      const titleText = document.createElement("span");
+      titleText.classList.add("category-name");
+      titleText.textContent = categoryName;
+
+      const deleteCategoryButton = document.createElement("button");
+      deleteCategoryButton.textContent = "X"; // Botão de excluir
+      deleteCategoryButton.classList.add("delete-category-button");
+
+      // Função para excluir a categoria
+      deleteCategoryButton.addEventListener("click", async (event) => {
+        event.stopPropagation(); // Impede que o clique feche a categoria
+        if (confirm(`Tem certeza que deseja excluir a categoria ${categoryName}?`)) {
+          const success = await deleteCategory(categoryId, token);
+          if (success) {
+            alert(`${categoryName} foi excluído com sucesso.`);
+            loadProductsByCategory();
+          } else {
+            alert("Erro ao excluir a categoria.");
+          }
+        }
+      });
+
+      const toggleArrow = document.createElement("span");
+      toggleArrow.classList.add("toggle-arrow");
+      toggleArrow.textContent = "▼"; // Seta para indicar que a aba está fechada
+
+     // Função para alternar a exibição dos produtos
+    categoryTitle.onclick = () => {
+      const productsList = categoryElement.querySelector(".products-list");
+      const isOpen = productsList.style.display === "block";
+      
+      // Ajusta a exibição inicial
+      if (isOpen) {
+        // Animação de fechamento
+        productsList.style.maxHeight = "0"; // Define a altura para 0
+        productsList.style.opacity = "0"; // Define a opacidade para 0
+        toggleArrow.textContent = "▼"; // Muda a seta para baixo
+
+        setTimeout(() => {
+          productsList.style.display = "none"; // Esconde a lista após a animação
+        }, 300); // Tempo igual ao da animação
+      } else {
+        productsList.style.display = "block"; // Exibe a lista
+        requestAnimationFrame(() => {
+          productsList.style.maxHeight = productsList.scrollHeight + "px"; // Ajusta a altura para o conteúdo
+          productsList.style.opacity = "1"; // Define a opacidade para 1
+        });
+        toggleArrow.textContent = "▲"; // Muda a seta para cima
+      }
+    };
+
+
+      categoryTitle.appendChild(titleText);
+      categoryTitle.appendChild(deleteCategoryButton);
+      categoryTitle.appendChild(toggleArrow);
       categoryElement.appendChild(categoryTitle);
 
-      if (token) {
-        const deleteCategoryButton = document.createElement("button");
-        deleteCategoryButton.textContent = "Excluir";
-        deleteCategoryButton.classList.add("delete-category-button");
-
-        deleteCategoryButton.addEventListener("click", async () => {
-          if (
-            confirm(
-              `Tem certeza que deseja excluir a categoria ${categoryName}?`
-            )
-          ) {
-            const success = await deleteCategory(categoryId, token);
-            if (success) {
-              alert(`${categoryName} foi excluído com sucesso.`);
-              loadProductsByCategory();
-            } else {
-              alert("Erro ao excluir a categoria.");
-            }
-          }
-        });
-
-        categoryElement.appendChild(deleteCategoryButton);
-      }
+      // Criar uma lista para os produtos
+      const productsList = document.createElement("div");
+      productsList.classList.add("products-list");
+      productsList.style.display = "none"; // Inicialmente oculta a lista de produtos
 
       items.forEach((item) => {
         const producItem = document.createElement("a");
@@ -104,22 +143,11 @@ async function loadProductsByCategory() {
         const productMedia = document.createElement("div");
         productMedia.classList.add("product-media");
 
-        const subCard = document.createElement("div");
-        subCard.classList.add("sub-card");
-
-        const btnProducts = document.createElement("div");
-        btnProducts.classList.add("btn-products");
-
         const productName = document.createElement("h2");
         productName.textContent = item.name;
 
         const productImage = document.createElement("img");
-        const srcImage =
-          `https://api-order-menu.vercel.app/api/${item.image_url}`.replace(
-            "\\",
-            "/"
-          );
-
+        const srcImage = `https://api-order-menu.vercel.app/api/${item.image_url}`.replace("\\", "/");
         productImage.src = srcImage;
         productImage.alt = item.name;
 
@@ -132,25 +160,22 @@ async function loadProductsByCategory() {
         productMedia.appendChild(productName);
         productMedia.appendChild(productDescription);
         productMedia.appendChild(productPrice);
-
-        subCard.appendChild(productMedia);
-        subCard.appendChild(productImage);
-        productCard.appendChild(subCard);
-
+        productCard.appendChild(productMedia);
+        productCard.appendChild(productImage);
         producItem.appendChild(productCard);
-        categoryElement.appendChild(producItem);
+        productsList.appendChild(producItem); // Adiciona o item à lista de produtos
       });
 
+      categoryElement.appendChild(productsList); // Adiciona a lista de produtos à categoria
       productsContainer.appendChild(categoryElement);
     }
   } catch (error) {
     console.error("Erro ao carregar os produtos por categoria:", error);
     const productsContainer = document.getElementById("products-container");
-    productsContainer.innerHTML =
-      "<p>Erro ao carregar produtos. Tente novamente mais tarde.</p>";
+    productsContainer.innerHTML = "<p>Erro ao carregar produtos. Tente novamente mais tarde.</p>";
   }
 }
-
+// Função para excluir produtos
 async function deleteProduct(productId, token) {
   try {
     const response = await fetch(
@@ -174,6 +199,7 @@ async function deleteProduct(productId, token) {
   }
 }
 
+// Função para excluir categorias
 async function deleteCategory(categoryId, token) {
   try {
     const response = await fetch(
@@ -197,11 +223,16 @@ async function deleteCategory(categoryId, token) {
   }
 }
 
+// Função para abrir o modal
 function openModal(product) {
   const token = localStorage.getItem("token"); // Verifica se o usuário está autenticado
   const modal = document.getElementById("productModal");
   const modalContent = document.getElementById("modalProductDetails");
-  const srcImage = `https://api-order-menu.vercel.app/api/${product.image_url}`.replace("\\", "/");
+  const srcImage =
+    `https://api-order-menu.vercel.app/api/${product.image_url}`.replace(
+      "\\",
+      "/"
+    );
 
   // Conteúdo do modal com os detalhes do produto
   modalContent.innerHTML = `
@@ -246,18 +277,21 @@ function openModal(product) {
     modalContent.appendChild(btnContainer);
   }
 
-  // Exibe o modal
-  document.body.classList.add("modal-open");
-  modal.style.display = "flex";
+  modal.style.display = "block"; // Exibe o modal
 }
 
+// Função para fechar o modal
 function closeModal() {
-  document.body.classList.remove("modal-open");
   const modal = document.getElementById("productModal");
-  modal.style.display = "none";
+  modal.style.display = "none"; // Oculta o modal
 }
 
-
-window.onload = () => {
-  loadProductsByCategory();
+// Evento para fechar o modal ao clicar fora dele
+window.onclick = function (event) {
+  const modal = document.getElementById("productModal");
+  if (event.target === modal) {
+    closeModal();
+  }
 };
+
+loadProductsByCategory(); // Chama a função para carregar produtos por categoria ao iniciar

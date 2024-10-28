@@ -1,11 +1,9 @@
-/* Importações */
 @import url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css");
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap");
 
-/* Variáveis de cores */
 :root {
-  --primary-color: #e02041;
-  --secondary-color: #c5c5c5;
+  --primary-color: #014aac;
+  --secondary-color: #105dc2;
   --light-color: #ffffff;
   --dark-color: #3d3a3a;
   --bg-color: #dd9191;
@@ -120,7 +118,6 @@ header .btn:hover {
   right: 10px;
 }
 
-
 #btnLogin {
   margin: 1.5rem;
   padding: 20px;
@@ -131,5 +128,5 @@ header .btn:hover {
 }
 
 #btnLogin:hover {
-  background-color: #c9213f;
+  background-color: var(--secondary-color);
 }

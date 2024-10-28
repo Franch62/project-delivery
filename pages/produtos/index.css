@@ -70,7 +70,7 @@ header .btn:hover {
 }
 
 .banner {
-  margin: 0rem;
+  margin: 0 0 1rem 0;
   width: 100%;
   position: relative;
   overflow: hidden;

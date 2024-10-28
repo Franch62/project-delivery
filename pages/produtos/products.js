@@ -68,74 +68,71 @@ async function loadProductsByCategory() {
       const categoryTitle = document.createElement("div");
       categoryTitle.classList.add("category-title");
 
-      
       const titleText = document.createElement("span");
       titleText.classList.add("category-name");
       titleText.textContent = categoryName;
 
-      const deleteCategoryButton = document.createElement("button");
-      deleteCategoryButton.textContent = "X"; // Botão de excluir
-      deleteCategoryButton.classList.add("delete-category-button");
+      // Somente exibe o botão de excluir se o token estiver presente
+      if (token) {
+        const deleteCategoryButton = document.createElement("button");
+        deleteCategoryButton.textContent = "X";
+        deleteCategoryButton.classList.add("delete-category-button");
 
-      // Função para excluir a categoria
-      deleteCategoryButton.addEventListener("click", async (event) => {
-        event.stopPropagation(); // Impede que o clique feche a categoria
-        if (confirm(`Tem certeza que deseja excluir a categoria ${categoryName}?`)) {
-          const success = await deleteCategory(categoryId, token);
-          if (success) {
-            alert(`${categoryName} foi excluído com sucesso.`);
-            loadProductsByCategory();
-          } else {
-            alert("Erro ao excluir a categoria.");
+        // Função para excluir a categoria
+        deleteCategoryButton.addEventListener("click", async (event) => {
+          event.stopPropagation();
+          if (confirm(`Tem certeza que deseja excluir a categoria ${categoryName}?`)) {
+            const success = await deleteCategory(categoryId, token);
+            if (success) {
+              alert(`${categoryName} foi excluído com sucesso.`);
+              loadProductsByCategory();
+            } else {
+              alert("Erro ao excluir a categoria.");
+            }
           }
-        }
-      });
+        });
+
+        categoryTitle.appendChild(deleteCategoryButton);
+      }
 
       const toggleArrow = document.createElement("span");
       toggleArrow.classList.add("toggle-arrow");
-      toggleArrow.textContent = "▼"; // Seta para indicar que a aba está fechada
+      toggleArrow.textContent = "▼";
 
-     // Função para alternar a exibição dos produtos
-    categoryTitle.onclick = () => {
-      const productsList = categoryElement.querySelector(".products-list");
-      const isOpen = productsList.style.display === "block";
-      
-      // Ajusta a exibição inicial
-      if (isOpen) {
-        // Animação de fechamento
-        productsList.style.maxHeight = "0"; // Define a altura para 0
-        productsList.style.opacity = "0"; // Define a opacidade para 0
-        toggleArrow.textContent = "▼"; // Muda a seta para baixo
+      categoryTitle.onclick = () => {
+        const productsList = categoryElement.querySelector(".products-list");
+        const isOpen = productsList.style.display === "block";
+        if (isOpen) {
+          productsList.style.maxHeight = "0";
+          productsList.style.opacity = "0";
+          toggleArrow.textContent = "▼";
 
-        setTimeout(() => {
-          productsList.style.display = "none"; // Esconde a lista após a animação
-        }, 300); // Tempo igual ao da animação
-      } else {
-        productsList.style.display = "block"; // Exibe a lista
-        requestAnimationFrame(() => {
-          productsList.style.maxHeight = productsList.scrollHeight + "px"; // Ajusta a altura para o conteúdo
-          productsList.style.opacity = "1"; // Define a opacidade para 1
-        });
-        toggleArrow.textContent = "▲"; // Muda a seta para cima
-      }
-    };
-
+          setTimeout(() => {
+            productsList.style.display = "none";
+          }, 300);
+        } else {
+          productsList.style.display = "block";
+          requestAnimationFrame(() => {
+            productsList.style.maxHeight = productsList.scrollHeight + "px";
+            productsList.style.opacity = "1";
+          });
+          toggleArrow.textContent = "▲";
+        }
+      };
 
       categoryTitle.appendChild(titleText);
-      categoryTitle.appendChild(deleteCategoryButton);
       categoryTitle.appendChild(toggleArrow);
       categoryElement.appendChild(categoryTitle);
 
-      // Criar uma lista para os produtos
       const productsList = document.createElement("div");
       productsList.classList.add("products-list");
-      productsList.style.display = "none"; // Inicialmente oculta a lista de produtos
+      productsList.style.display = "none";
 
       items.forEach((item) => {
         const producItem = document.createElement("a");
         producItem.classList.add("product-item");
-        producItem.href = "javascript:void(0)"; // Evita navegação padrão
-        producItem.onclick = () => openModal(item); // Abre o modal com detalhes do produto
+        producItem.href = "javascript:void(0)";
+        producItem.onclick = () => openModal(item);
 
         const productCard = document.createElement("div");
         productCard.classList.add("product-card");
@@ -163,10 +160,10 @@ async function loadProductsByCategory() {
         productCard.appendChild(productMedia);
         productCard.appendChild(productImage);
         producItem.appendChild(productCard);
-        productsList.appendChild(producItem); // Adiciona o item à lista de produtos
+        productsList.appendChild(producItem);
       });
 
-      categoryElement.appendChild(productsList); // Adiciona a lista de produtos à categoria
+      categoryElement.appendChild(productsList);
       productsContainer.appendChild(categoryElement);
     }
   } catch (error) {
@@ -175,6 +172,7 @@ async function loadProductsByCategory() {
     productsContainer.innerHTML = "<p>Erro ao carregar produtos. Tente novamente mais tarde.</p>";
   }
 }
+
 // Função para excluir produtos
 async function deleteProduct(productId, token) {
   try {

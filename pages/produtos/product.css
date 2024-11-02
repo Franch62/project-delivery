@@ -7,7 +7,8 @@
 }
 
 .category {
-  width: 100%;
+  max-width: 600px;
+  min-width: 400px;
 }
 
 .category-title {
@@ -15,7 +16,6 @@
   justify-content: space-between;
   align-items: center;
   width: 100%;
-  max-width: 42rem;
   background-color: var(--primary-color);
   border-radius: 0.5rem;
   color: var(--light-color);
@@ -237,6 +237,7 @@
 }
 
 #products-container {
+  width: 100%;
   display: flex;
   gap: 20px;
   flex-wrap: wrap;

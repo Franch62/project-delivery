@@ -120,12 +120,16 @@ header .btn:hover {
 }
 
 #btnLogin {
+  display: flex;
   margin: 1.5rem;
   padding: 1rem 2rem;
   background-color: var(--primary-color);
   color: var(--light-color);
   text-decoration: none;
   border-radius: 5px;
+  justify-content: center;
+  gap: 1rem;
+  align-items: center;
 }
 
 #btnLogin:hover {

@@ -26,7 +26,7 @@ async function loadProductsByCategory() {
       divButtons.appendChild(btnAddCategory);
     }
 
-    const response = await fetch("http://localhost:3000/api/menu/", {
+    const response = await fetch("https://api-order-menu.onrender.com/api/menu/", {
       headers: {
         "Authorization": `Bearer ${token}`,
       },
@@ -147,7 +147,7 @@ async function loadProductsByCategory() {
         productName.textContent = item.name;
 
         const productImage = document.createElement("img");
-        const srcImage = `http://localhost:3000/api/${item.image_url}`.replace(
+        const srcImage = `https://api-order-menu.onrender.com/api/${item.image_url}`.replace(
           "\\",
           "/"
         );
@@ -184,7 +184,7 @@ async function loadProductsByCategory() {
 async function deleteProduct(productId, token) {
   try {
     const response = await fetch(
-      `http://localhost:3000/api/menu/${productId}`,
+      `https://api-order-menu.onrender.com/api/menu/${productId}`,
       {
         method: "DELETE",
         headers: {
@@ -208,7 +208,7 @@ async function deleteProduct(productId, token) {
 async function deleteCategory(categoryId, token) {
   try {
     const response = await fetch(
-      `http://localhost:3000/api/categories/${categoryId}`,
+      `https://api-order-menu.onrender.com/api/categories/${categoryId}`,
       {
         method: "DELETE",
         headers: {
@@ -233,9 +233,11 @@ function openModal(product) {
   const modal = document.getElementById("productModal");
   const modalContent = document.getElementById("modalProductDetails");
 
-  const srcImage = `http://localhost:3000/api/${product.image_url}`.replace("\\", "/");
+  const srcImage = `https://api-order-menu.onrender.com/api/${product.image_url}`.replace(
+    "\\",
+    "/"
+  );
 
-  
   modalContent.innerHTML = `
       <h2>${product.name}</h2>
       <img src="${srcImage}" alt="${product.name}" style="width: 100%; border-radius: 8px; margin-top: 1rem;">
@@ -263,40 +265,36 @@ function openModal(product) {
   const addToCartButton = document.getElementById("add-to-cart-button");
 
   const updateButtonLabel = () => {
-      const amount = parseInt(inputProductAmount.value, 10);
-      const totalPrice = (amount * product.price).toFixed(2);
-      addToCartButton.textContent = `Adicionar ao Carrinho: R$ ${totalPrice}`;
+    const amount = parseInt(inputProductAmount.value, 10);
+    const totalPrice = (amount * product.price).toFixed(2);
+    addToCartButton.textContent = `Adicionar ao Carrinho: R$ ${totalPrice}`;
   };
 
   btnMinus.onclick = function decrementAmount() {
-      let currentAmount = parseInt(inputProductAmount.value, 10);
-      if (currentAmount > 1) {
-          currentAmount--;
-          inputProductAmount.value = currentAmount;
-          updateButtonLabel(); 
-      } else {
-          alert('A quantidade não pode ser menor que um!');
-      }
+    let currentAmount = parseInt(inputProductAmount.value, 10);
+    if (currentAmount > 1) {
+      currentAmount--;
+      inputProductAmount.value = currentAmount;
+      updateButtonLabel();
+    } else {
+      alert("A quantidade não pode ser menor que um!");
+    }
   };
 
   btnPlus.onclick = function incrementAmount() {
-      let currentAmount = parseInt(inputProductAmount.value, 10);
-      if (currentAmount < 99) {
-          currentAmount++;
-          inputProductAmount.value = currentAmount;
-          updateButtonLabel(); 
-      } else {
-          alert('A quantidade não pode ser maior que noventa e nove!');
-      }
+    let currentAmount = parseInt(inputProductAmount.value, 10);
+    if (currentAmount < 99) {
+      currentAmount++;
+      inputProductAmount.value = currentAmount;
+      updateButtonLabel();
+    } else {
+      alert("A quantidade não pode ser maior que noventa e nove!");
+    }
   };
 
-
-  inputProductAmount.addEventListener('input', updateButtonLabel);
-  
+  inputProductAmount.addEventListener("input", updateButtonLabel);
 
   updateButtonLabel();
-
-
 
   if (token) {
     const btnContainer = document.createElement("div");

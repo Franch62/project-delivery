@@ -26,14 +26,11 @@ async function loadProductsByCategory() {
       divButtons.appendChild(btnAddCategory);
     }
 
-    const response = await fetch(
-      "http://localhost:3000/api/menu/",
-      {
-        headers: {
-          "Authorization": `Bearer ${token}`,
-        },
-      }
-    );
+    const response = await fetch("http://localhost:3000/api/menu/", {
+      headers: {
+        "Authorization": `Bearer ${token}`,
+      },
+    });
 
     if (!response.ok) {
       throw new Error("Erro ao carregar produtos");
@@ -60,7 +57,9 @@ async function loadProductsByCategory() {
       }
     });
 
-    for (const [categoryId, { name: categoryName, items }] of Object.entries(productsByCategory)) {
+    for (const [categoryId, { name: categoryName, items }] of Object.entries(
+      productsByCategory
+    )) {
       const categoryElement = document.createElement("div");
       categoryElement.classList.add("category");
 
@@ -81,7 +80,11 @@ async function loadProductsByCategory() {
         // Função para excluir a categoria
         deleteCategoryButton.addEventListener("click", async (event) => {
           event.stopPropagation();
-          if (confirm(`Tem certeza que deseja excluir a categoria ${categoryName}?`)) {
+          if (
+            confirm(
+              `Tem certeza que deseja excluir a categoria ${categoryName}?`
+            )
+          ) {
             const success = await deleteCategory(categoryId, token);
             if (success) {
               alert(`${categoryName} foi excluído com sucesso.`);
@@ -144,7 +147,10 @@ async function loadProductsByCategory() {
         productName.textContent = item.name;
 
         const productImage = document.createElement("img");
-        const srcImage = `http://localhost:3000/api/${item.image_url}`.replace("\\", "/");
+        const srcImage = `http://localhost:3000/api/${item.image_url}`.replace(
+          "\\",
+          "/"
+        );
         productImage.src = srcImage;
         productImage.alt = item.name;
 
@@ -169,7 +175,8 @@ async function loadProductsByCategory() {
   } catch (error) {
     console.error("Erro ao carregar os produtos por categoria:", error);
     const productsContainer = document.getElementById("products-container");
-    productsContainer.innerHTML = "<p>Erro ao carregar produtos. Tente novamente mais tarde.</p>";
+    productsContainer.innerHTML =
+      "<p>Erro ao carregar produtos. Tente novamente mais tarde.</p>";
   }
 }
 
@@ -221,43 +228,79 @@ async function deleteCategory(categoryId, token) {
   }
 }
 
-// Função para abrir o modal
 function openModal(product) {
   const token = sessionStorage.getItem("token"); // Verifica se o usuário está autenticado
   const modal = document.getElementById("productModal");
   const modalContent = document.getElementById("modalProductDetails");
-  const srcImage =
-    `http://localhost:3000/api/${product.image_url}`.replace(
-      "\\",
-      "/"
-    );
 
-  // Conteúdo do modal com os detalhes do produto
+  const srcImage = `http://localhost:3000/api/${product.image_url}`.replace("\\", "/");
+
+  
   modalContent.innerHTML = `
-    <h2>${product.name}</h2>
-    <img src="${srcImage}" alt="${product.name}" style="width: 100%; border-radius: 8px; margin-top: 1rem;">
-    <p>${product.description}</p>
-    <div class="input-group input-group-lg">
-      <span class="input-group-btn">
-          <button type="button" class="btn btn-default btn-minus">
-              <span class="fa fa-minus"></span>
-          </button>
-      </span>
-      <input class="form-control text-center" data-val="true" data-val-number="O campo deve ser um número." id="Quantidade" name="Quantidade" type="number" value="1" aria-describedby="Quantidade-error" aria-invalid="false" data-val-range-min="1" data-val-range-max="99" data-val-range="">
-      <span class="input-group-btn">
-          <button type="button" class="btn btn-default btn-plus">
-              <span class="fa fa-plus"></span>
-          </button>
-      </span>
-    </div>
-    <p><strong>Preço:</strong> R$ ${product.price}</p>
-    <button id="add-to-cart-button">Adicionar ao Carrinho: R$${product.price}</button>
+      <h2>${product.name}</h2>
+      <img src="${srcImage}" alt="${product.name}" style="width: 100%; border-radius: 8px; margin-top: 1rem;">
+      <p>${product.description}</p>
+      <div class="input-group input-group-lg">
+          <span class="input-group-btn">
+              <button type="button" id="btn-minus" class="btn btn-default btn-minus">
+                  <span class="fa fa-minus"></span>
+              </button>
+          </span>
+          <input class="input-amount" id="Amount" type="number" value="1" min="1" max="99">
+          <span class="input-group-btn">
+              <button type="button" id="btn-plus" class="btn btn-default btn-plus">
+                  <span class="fa fa-plus"></span>
+              </button>
+          </span>
+      </div>
+      <p><strong>Preço:</strong> R$ ${product.price}</p>
+      <button id="add-to-cart-button">Adicionar ao Carrinho: R$ ${product.price}</button>
   `;
+
+  const inputProductAmount = document.getElementById("Amount");
+  const btnMinus = document.getElementById("btn-minus");
+  const btnPlus = document.getElementById("btn-plus");
+  const addToCartButton = document.getElementById("add-to-cart-button");
+
+  const updateButtonLabel = () => {
+      const amount = parseInt(inputProductAmount.value, 10);
+      const totalPrice = (amount * product.price).toFixed(2);
+      addToCartButton.textContent = `Adicionar ao Carrinho: R$ ${totalPrice}`;
+  };
+
+  btnMinus.onclick = function decrementAmount() {
+      let currentAmount = parseInt(inputProductAmount.value, 10);
+      if (currentAmount > 1) {
+          currentAmount--;
+          inputProductAmount.value = currentAmount;
+          updateButtonLabel(); 
+      } else {
+          alert('A quantidade não pode ser menor que um!');
+      }
+  };
+
+  btnPlus.onclick = function incrementAmount() {
+      let currentAmount = parseInt(inputProductAmount.value, 10);
+      if (currentAmount < 99) {
+          currentAmount++;
+          inputProductAmount.value = currentAmount;
+          updateButtonLabel(); 
+      } else {
+          alert('A quantidade não pode ser maior que noventa e nove!');
+      }
+  };
+
+
+  inputProductAmount.addEventListener('input', updateButtonLabel);
+  
+
+  updateButtonLabel();
+
+
 
   if (token) {
     const btnContainer = document.createElement("div");
     btnContainer.classList.add("btn-products-modal");
-
 
     const editButton = document.createElement("button");
     editButton.textContent = "Editar";
@@ -266,7 +309,6 @@ function openModal(product) {
       window.location.href = `/pages/edita-produto/editProduct.html?id=${product._id}`;
     };
     btnContainer.appendChild(editButton);
-
 
     const deleteButton = document.createElement("button");
     deleteButton.textContent = "Excluir";
@@ -288,16 +330,14 @@ function openModal(product) {
     modalContent.appendChild(btnContainer);
   }
 
-  modal.style.display = "block"; // Exibe o modal
+  modal.style.display = "block";
 }
 
-// Função para fechar o modal
 function closeModal() {
   const modal = document.getElementById("productModal");
-  modal.style.display = "none"; // Oculta o modal
+  modal.style.display = "none";
 }
 
-// Evento para fechar o modal ao clicar fora dele
 window.onclick = function (event) {
   const modal = document.getElementById("productModal");
   if (event.target === modal) {
@@ -305,4 +345,4 @@ window.onclick = function (event) {
   }
 };
 
-loadProductsByCategory(); // Chama a função para carregar produtos por categoria ao iniciar
+loadProductsByCategory();

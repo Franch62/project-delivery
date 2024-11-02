@@ -7,7 +7,8 @@
 }
 
 .category {
-  width: 600px;
+  width: 512px;
+  max-width: 512px;
 }
 
 .category-title {
@@ -179,6 +180,10 @@
     max-width: 100%; 
   }
 
+  .category {
+    max-width: 100%;
+  }
+
   .category-title {
     max-width: 100%; 
     padding: 0.8rem; 
@@ -207,6 +212,15 @@
   .edit-button, .delete-product-button {
     width: 100%; 
   }
+
+  #products-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    max-width: 70rem ;
+  }
+  
+
 }
 
 #add-buttons {

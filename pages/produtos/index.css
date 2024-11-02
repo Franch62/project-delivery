@@ -22,6 +22,7 @@ body {
   margin: 0;
   padding: 0;
   background-color: var(--light-color);
+  height: 200vh;
 }
 
 header {
@@ -120,7 +121,7 @@ header .btn:hover {
 
 #btnLogin {
   margin: 1.5rem;
-  padding: 20px;
+  padding: 1rem 2rem;
   background-color: var(--primary-color);
   color: var(--light-color);
   text-decoration: none;

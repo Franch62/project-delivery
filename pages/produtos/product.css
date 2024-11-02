@@ -1,22 +1,21 @@
 .main-content {
   display: grid;
-  grid-template-columns: 1fr, 2fr;
+  /* grid-template-columns: 1fr fr; */
   justify-content: center;
   align-items: center;
   margin: 1rem;
 }
 
 .category {
-  width: 512px;
-  max-width: 512px;
+  width: 100%;
 }
 
 .category-title {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  width: 100%; 
-  max-width: 42rem; 
+  width: 100%;
+  max-width: 42rem;
   background-color: var(--primary-color);
   border-radius: 0.5rem;
   color: var(--light-color);
@@ -131,12 +130,12 @@
 
 .product-card img {
   width: 40%;
-  border-radius: 0.5rem; 
-  transition: opacity 0.3s ease; 
+  border-radius: 0.5rem;
+  transition: opacity 0.3s ease;
 }
 
 .product-card:hover img {
-  opacity: 0.9; 
+  opacity: 0.9;
   max-width: 246px;
 }
 
@@ -176,30 +175,27 @@
 }
 
 @media (max-width: 768px) {
-  .product-card {
-    max-width: 100%; 
+
+  .main-content{
+    height: 100vh;
   }
 
-  .category {
+  .product-card, .category, .category-title {
     max-width: 100%;
-  }
-
-  .category-title {
-    max-width: 100%; 
-    padding: 0.8rem; 
+    padding: 0.5rem;
   }
 
   .delete-category-button {
-    font-size: 1rem; 
-    margin: 0 1rem; 
+    font-size: 1rem;
+    margin: 0 1rem;
   }
 
   .toggle-arrow {
-    font-size: 1rem; 
+    font-size: 1rem;
   }
 
   #btn-main {
-    width: 100%; 
+    width: 100%;
   }
 
   #add-buttons {
@@ -209,18 +205,17 @@
     gap: 0.1rem;
   }
 
-  .edit-button, .delete-product-button {
-    width: 100%; 
+  .edit-button,
+  .delete-product-button {
+    width: 100%;
   }
 
   #products-container {
     display: flex;
     justify-content: center;
     align-items: center;
-    max-width: 70rem ;
+    max-width: 100%;
   }
-  
-
 }
 
 #add-buttons {

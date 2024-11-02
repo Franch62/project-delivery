@@ -1,30 +1,42 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Lista de Pedidos</title>
-    <link rel="stylesheet" href="./pedidos.css">
-</head>
-<body>
+    <link rel="stylesheet" href="./pedidos.css" />
+  </head>
+  <body>
     <div class="container">
-        <h1>Lista de Pedidos</h1>
+      <h1>Lista de Pedidos</h1>
 
-        <!-- Formulário para adicionar novos pedidos -->
-        <div class="add-order-form">
-            <input type="text" id="orderName" placeholder="Nome do Pedido" required>
-            <input type="number" id="orderPrice" placeholder="Preço (R$)" required>
-            <button id="addOrderButton">Adicionar Pedido</button>
-        </div>
+      <!-- Formulário para adicionar novos pedidos -->
+      <div class="add-order-form">
+        <input
+          type="text"
+          id="orderName"
+          placeholder="Nome do Pedido"
+          required
+        />
+        <input
+          type="number"
+          id="orderPrice"
+          placeholder="Preço (R$)"
+          required
+        />
+        <button id="addOrderButton">Adicionar Pedido</button>
+      </div>
 
-        <!-- Botão para apagar todos os pedidos -->
-        <button id="clearAllButton" class="clear-button">Apagar Todos os Pedidos</button>
+      <!-- Botão para apagar todos os pedidos -->
+      <button id="clearAllButton" class="clear-button">
+        Apagar Todos os Pedidos
+      </button>
 
-        <ul class="order-list" id="orderList">
-            <!-- Lista de pedidos será adicionada dinamicamente aqui -->
-        </ul>
+      <ul class="order-list" id="orderList">
+        <!-- Lista de pedidos será adicionada dinamicamente aqui -->
+      </ul>
     </div>
 
     <script src="pedidos.js"></script>
-</body>
+  </body>
 </html>

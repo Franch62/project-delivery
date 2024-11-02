@@ -29,7 +29,7 @@
   align-items: center; /* Centraliza o conteúdo horizontalmente */
   justify-content: center; /* Centraliza o conteúdo verticalmente */
   position: relative; /* Para o botão fechar */
-  
+
   /* Centralização adicional */
   transform: translate(-50%, -50%); /* Move o modal para o centro */
   top: 50%; /* 50% da altura da tela */
@@ -62,7 +62,7 @@
 }
 
 .edit-button {
-  background-color: #4CAF50; /* Cor de fundo para o botão Editar */
+  background-color: #4caf50; /* Cor de fundo para o botão Editar */
   color: white;
 }
 
@@ -70,3 +70,31 @@
   background-color: #f44336; /* Cor de fundo para o botão Excluir */
   color: white;
 }
+
+.input-group {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  margin: 5px;
+  padding: 0.2rem;
+}
+
+.btn-default {
+  padding: 1rem;
+  background-color: var(--primary-color);
+  border: none;
+  border-radius: 5px;
+  transition: 0.2s;
+  cursor: pointer;
+  color: #fff;
+}
+.form-control {
+  padding: 1rem;
+  text-align: center;
+  font-size: 1rem;
+}
+
+/* .btn-default {
+  background: 014aac;
+} */

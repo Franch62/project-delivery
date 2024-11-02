@@ -27,7 +27,7 @@ async function loadProductsByCategory() {
     }
 
     const response = await fetch(
-      "https://api-order-menu.vercel.app/api/menu/",
+      "http://localhost:3000/api/menu/",
       {
         headers: {
           "Authorization": `Bearer ${token}`,
@@ -144,7 +144,7 @@ async function loadProductsByCategory() {
         productName.textContent = item.name;
 
         const productImage = document.createElement("img");
-        const srcImage = `https://api-order-menu.vercel.app/api/${item.image_url}`.replace("\\", "/");
+        const srcImage = `http://localhost:3000/api/${item.image_url}`.replace("\\", "/");
         productImage.src = srcImage;
         productImage.alt = item.name;
 
@@ -177,7 +177,7 @@ async function loadProductsByCategory() {
 async function deleteProduct(productId, token) {
   try {
     const response = await fetch(
-      `https://api-order-menu.vercel.app/api/menu/${productId}`,
+      `http://localhost:3000/api/menu/${productId}`,
       {
         method: "DELETE",
         headers: {
@@ -201,7 +201,7 @@ async function deleteProduct(productId, token) {
 async function deleteCategory(categoryId, token) {
   try {
     const response = await fetch(
-      `https://api-order-menu.vercel.app/api/categories/${categoryId}`,
+      `http://localhost:3000/api/categories/${categoryId}`,
       {
         method: "DELETE",
         headers: {
@@ -227,7 +227,7 @@ function openModal(product) {
   const modal = document.getElementById("productModal");
   const modalContent = document.getElementById("modalProductDetails");
   const srcImage =
-    `https://api-order-menu.vercel.app/api/${product.image_url}`.replace(
+    `http://localhost:3000/api/${product.image_url}`.replace(
       "\\",
       "/"
     );
@@ -237,15 +237,28 @@ function openModal(product) {
     <h2>${product.name}</h2>
     <img src="${srcImage}" alt="${product.name}" style="width: 100%; border-radius: 8px; margin-top: 1rem;">
     <p>${product.description}</p>
+    <div class="input-group input-group-lg">
+      <span class="input-group-btn">
+          <button type="button" class="btn btn-default btn-minus">
+              <span class="fa fa-minus"></span>
+          </button>
+      </span>
+      <input class="form-control text-center" data-val="true" data-val-number="O campo deve ser um número." id="Quantidade" name="Quantidade" type="number" value="1" aria-describedby="Quantidade-error" aria-invalid="false" data-val-range-min="1" data-val-range-max="99" data-val-range="">
+      <span class="input-group-btn">
+          <button type="button" class="btn btn-default btn-plus">
+              <span class="fa fa-plus"></span>
+          </button>
+      </span>
+    </div>
     <p><strong>Preço:</strong> R$ ${product.price}</p>
+    <button id="add-to-cart-button">Adicionar ao Carrinho: R$${product.price}</button>
   `;
 
-  // Se o token estiver presente, adiciona os botões "Editar" e "Excluir" dentro do modal
   if (token) {
     const btnContainer = document.createElement("div");
     btnContainer.classList.add("btn-products-modal");
 
-    // Botão Editar
+
     const editButton = document.createElement("button");
     editButton.textContent = "Editar";
     editButton.classList.add("edit-button");
@@ -254,7 +267,7 @@ function openModal(product) {
     };
     btnContainer.appendChild(editButton);
 
-    // Botão Excluir
+
     const deleteButton = document.createElement("button");
     deleteButton.textContent = "Excluir";
     deleteButton.classList.add("delete-button");
@@ -264,7 +277,7 @@ function openModal(product) {
         if (success) {
           alert(`${product.name} foi excluído com sucesso.`);
           closeModal();
-          loadProductsByCategory(); // Atualiza a lista de produtos
+          loadProductsByCategory();
         } else {
           alert("Erro ao excluir o produto.");
         }

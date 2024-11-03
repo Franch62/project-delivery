@@ -26,11 +26,14 @@ async function loadProductsByCategory() {
       divButtons.appendChild(btnAddCategory);
     }
 
-    const response = await fetch("https://api-order-menu.onrender.com/api/menu/", {
-      headers: {
-        "Authorization": `Bearer ${token}`,
-      },
-    });
+    const response = await fetch(
+      "https://api-order-menu.onrender.com/api/menu/",
+      {
+        headers: {
+          "Authorization": `Bearer ${token}`,
+        },
+      }
+    );
 
     if (!response.ok) {
       throw new Error("Erro ao carregar produtos");
@@ -147,10 +150,11 @@ async function loadProductsByCategory() {
         productName.textContent = item.name;
 
         const productImage = document.createElement("img");
-        const srcImage = `https://api-order-menu.onrender.com/api/${item.image_url}`.replace(
-          "\\",
-          "/"
-        );
+        const srcImage =
+          `https://api-order-menu.onrender.com/api/${item.image_url}`.replace(
+            /\\/g,
+            "/"
+          );
         productImage.src = srcImage;
         productImage.alt = item.name;
 
@@ -233,10 +237,11 @@ function openModal(product) {
   const modal = document.getElementById("productModal");
   const modalContent = document.getElementById("modalProductDetails");
 
-  const srcImage = `https://api-order-menu.onrender.com/api/${product.image_url}`.replace(
-    "\\",
-    "/"
-  );
+  const srcImage =
+    `https://api-order-menu.onrender.com/api/${product.image_url}`.replace(
+      "\\",
+      "/"
+    );
 
   modalContent.innerHTML = `
       <h2>${product.name}</h2>

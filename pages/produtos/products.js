@@ -298,7 +298,6 @@ function openModal(product) {
   };
 
   inputProductAmount.addEventListener("input", updateButtonLabel);
-
   updateButtonLabel();
 
   if (token) {
@@ -339,6 +338,11 @@ function openModal(product) {
 function closeModal() {
   const modal = document.getElementById("productModal");
   modal.style.display = "none";
+}
+
+function loadButtonCart(product) {
+  const mainContent = document.getElementById("main-content");
+  mainContent.innerHTML = `<button id="add-to-cart-button" class="add-to-cart-button btn-cart-mobile">Adicionar ao Carrinho: R$ ${product.price}</button>`;
 }
 
 window.onclick = function (event) {

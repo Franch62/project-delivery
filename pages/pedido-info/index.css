@@ -76,13 +76,13 @@ a:hover {
 .option-btn {
     flex: 1;
     padding: 10px;
-    background-color: #0e11e0;
+    background-color: #014aac;
     border-radius: 4px;
     margin: 5px;
 }
 
 .option-btn.selected {
-    background-color: #0e11e0;
+    background-color: #014aac;
     font-weight: bold;
 }
 

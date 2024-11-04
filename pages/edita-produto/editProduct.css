@@ -4,7 +4,6 @@
 
 }
 
-
 /* Estilo geral do corpo */
 body {
     font-family: "Poppins", sans-serif;
@@ -55,6 +54,7 @@ header {
 h1 {
     text-align: center;
     color: #333;
+    margin: 50 auto;
 }
 
 /* Estilo do formulário */
@@ -64,7 +64,8 @@ h1 {
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
     padding: 20px;
     max-width: 600px;
-    margin: 0 auto;
+    margin: 50 auto;
+    width: 100%;
 }
 
 /* Estilo dos rótulos */

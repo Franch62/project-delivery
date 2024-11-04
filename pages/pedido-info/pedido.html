@@ -7,32 +7,72 @@
     <link rel="stylesheet" href="./index.css" />
   </head>
   <body>
-    <div class="container">
-      <h1>Consumir no estabelecimento</h1>
-      <div class="store-info">
-        <p><strong>Barracão da feira</strong></p>
-      </div>
+    <div id="loading" class="loading">Carregando...</div>
 
-      <div class="delivery">
-        <label for="cep">Entregar em</label>
-        <div class="cep-input">
-          <input type="text" id="cep" placeholder="Informe o CEP" />
-          <button>Buscar</button>
+    <form id="multiStepForm">
+      <div class="step active container" id="step1">
+        <div>
+          <h2>Vou até o Local</h2>
+          <div class="options">
+            <label for="option-btn"
+              ><input
+                type="radio"
+                name="option-btn"
+                class="option-btn"
+              />Retirada</label
+            >
+            <label for="option-btn"
+              ><input type="radio" class="option-btn selected" />Entrega</label
+            >
+          </div>
+          <button type="button" onclick="nextStep()">Próximo</button>
         </div>
-        <a href="#">Não sei meu CEP</a>
       </div>
 
-      <div class="local-option">
-        <h2>Vou até o Local</h2>
-        <div class="options">
-          <button class="option-btn">Retirada</button>
-          <button class="option-btn selected">Consumir</button>
+      <div class="step active container" id="step2">
+        <div>
+          <h1>Consumir no estabelecimento</h1>
+          <div class="store-info">
+            <p><strong>Barracão da feira</strong></p>
+          </div>
+          <div class="delivery">
+            <label for="cep">Entregar em</label>
+            <div class="cep-input">
+              <input type="text" id="cep" placeholder="Informe o CEP" />
+              <button>Buscar</button>
+            </div>
+            <a href="#">Não sei meu CEP</a>
+          </div>
+          <div class="local-option"></div>
+          <button type="button" onclick="prevStep()">Anterior</button>
+          <button type="button" onclick="nextStep()">Próximo</button>
         </div>
       </div>
 
-      <div class="login">
-        <p>Possui endereços cadastrados? <a href="#">Entrar</a></p>
+      <!-- Etapa 2: Nome e Telefone -->
+      <div class="step" id="step3">
+        <div>
+          <h2>Informações Pessoais</h2>
+          <label for="name">Nome:</label>
+          <input type="text" id="name" name="name" required />
+          <label for="phone">Telefone:</label>
+          <input type="tel" id="phone" name="phone" required />
+          <button type="button" onclick="prevStep()">Anterior</button>
+          <button type="button" onclick="nextStep()">Próximo</button>
+        </div>
       </div>
-    </div>
+
+      <!-- Etapa 3: Confirmação -->
+      <div class="step" id="step4">
+        <div>
+          <h2>Confirmação</h2>
+          <p>Revise suas informações antes de enviar.</p>
+          <button type="button" onclick="prevStep()">Anterior</button>
+          <button type="submit">Enviar</button>
+        </div>
+      </div>
+    </form>
+
+    <script src="./script.js"></script>
   </body>
 </html>

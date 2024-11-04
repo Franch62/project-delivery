@@ -1,0 +1,140 @@
+
+:root {
+    --hover-color: #2090CE;
+
+}
+
+
+/* Estilo geral do corpo */
+body {
+    font-family: "Poppins", sans-serif;
+    background-color: #d4d3d3;
+    margin: 0;
+
+}
+
+
+/* Cabeçalho*/
+header {
+    background-color: var(--light-color);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+  }
+  
+  header a {
+    padding: 1.2rem;
+    border-radius: 2px;
+    text-decoration: none;
+    color: var(--dark-color);
+    transition: all 0.3s ease;
+  
+  }
+  
+  header a:hover {
+    background: var(--secondary-color);
+  }
+  
+  header ul {
+    list-style: none;
+    display: flex;
+    gap: 4rem;
+    padding: 2rem;
+    margin: 0;
+  }
+
+
+  header .btn {
+    padding:  15px;
+    background-color: var(--hover-color);
+    margin-right: 5rem;
+ 
+}
+
+/* Estilo do formulário */
+#form-products {
+
+  background-color: #5f5e5e;
+  border-radius: 5px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  max-width: 600px;
+  margin: 100 auto;
+  width: 100%;
+}
+
+/* Estilo dos rótulos */
+label {
+  display: block;
+  margin-bottom: 5px;
+  color: #ffffff;
+}
+
+/* Estilo dos campos de entrada */
+input[type="text"],
+input[type="number"],
+select,
+input[type="file"] {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 15px;
+  border: 1px solid #fffefe;
+  border-radius: 4px;
+  box-sizing: border-box;
+  background-color: #e9e9e9;
+  color: black;
+}
+
+/* Estilo do botão de envio */
+input[type="submit"] {
+  background-color: #007bff; /* Altere para a cor desejada */
+  color: black;
+  border: none;
+  padding: 10px;
+  border-radius: 4px;
+  font-size: 16px;
+  width: 10rem;
+  display: block; 
+  margin: 3 auto;
+  cursor: pointer;
+}
+
+/* Estilo para a pré-visualização da imagem */
+#image-preview {
+  margin-top: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  display: block;
+}
+
+/* Estilo do carregando spinner */
+#loading-spinner {
+  text-align: center;
+  font-weight: bold;
+  color: #333;
+}
+
+/* Estilo do resultado da edição */
+#insert-result {
+  margin-top: 20px;
+  text-align: center;
+  font-weight: bold;
+}
+  
+  /* Responsividade */
+  @media (max-width: 768px) {
+    header ul {
+      gap: 2rem;
+      padding: 1rem;
+    }
+  
+    .features {
+      flex-direction: column;
+      padding: 1rem;
+    }
+  
+    section li {
+      width: 100%;
+    }
+  }

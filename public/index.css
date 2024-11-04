@@ -22,6 +22,7 @@ body {
   background-color: var(--light-color);
 }
 
+/* Cabeçalho */
 header {
   background-color: var(--light-color);
   display: flex;
@@ -51,6 +52,20 @@ header ul {
   margin: 0;
 }
 
+header .btn {
+  padding:  20px;
+  background-color: var(--primary-color);
+  color: var(--light-color);
+  text-decoration: none;
+  border-radius: 5px;
+  margin-right: 5rem;
+
+}
+
+header .btn:hover {
+  background-color: #c9213f;
+
+}
 
 .features {
   display: flex;
@@ -128,20 +143,6 @@ section .icon {
   margin-bottom: 10px;
 }
 
-header .btn {
-  padding:  20px;
-  background-color: var(--primary-color);
-  color: var(--light-color);
-  text-decoration: none;
-  border-radius: 5px;
-  display: flex;
-
-}
-
-header .btn:hover {
-  background-color: #c9213f;
-
-}
 
 
 /*  Entre em contato */

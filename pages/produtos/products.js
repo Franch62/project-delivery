@@ -43,7 +43,7 @@ async function loadProductsByCategory() {
     const productsContainer = document.getElementById("products-container");
     productsContainer.innerHTML = "";
 
-    // Organiza os produtos por categoria
+
     const productsByCategory = {};
     products.forEach((product) => {
       if (product.category && product.category.name) {
@@ -66,7 +66,6 @@ async function loadProductsByCategory() {
       const categoryElement = document.createElement("div");
       categoryElement.classList.add("category");
 
-      // Criar título da categoria com botão de excluir e seta
       const categoryTitle = document.createElement("div");
       categoryTitle.classList.add("category-title");
 
@@ -74,7 +73,6 @@ async function loadProductsByCategory() {
       titleText.classList.add("category-name");
       titleText.textContent = categoryName;
 
-      // Somente exibe o botão de excluir se o token estiver presente
       if (token) {
         const deleteCategoryButton = document.createElement("button");
         deleteCategoryButton.textContent = "X";

@@ -8,13 +8,12 @@ function showStep(step) {
   });
 }
 
-// Exibe o efeito de loading temporariamente
 function showLoading(callback) {
   loading.classList.add("show");
   setTimeout(() => {
     loading.classList.remove("show");
     callback();
-  }, 500); // Tempo do efeito de carregamento (0.5 segundos)
+  }, 500);
 }
 
 function nextStep() {
@@ -35,11 +34,33 @@ function prevStep() {
   }
 }
 
-// Exibe a primeira etapa ao carregar a página
+async function buscarCEP() {
+  const cep = document.getElementById("cep").value;
+  if (cep.length === 8) {
+    try {
+      const response = await fetch(`https://viacep.com.br/ws/${cep}/json/`);
+      if (!response.ok) throw new Error("CEP não encontrado");
+      const data = await response.json();
+
+      if (data.erro) {
+        alert("CEP não encontrado.");
+      } else {
+        document.getElementById("rua").value = data.logradouro;
+        document.getElementById("bairro").value = data.bairro;
+      }
+    } catch (error) {
+      alert("Erro ao buscar CEP. Verifique se ele está correto.");
+    }
+  } else {
+    alert("Digite um CEP válido com 8 dígitos.");
+  }
+}
+
 showStep(currentStep);
 
-// Listener para o envio do formulário
-document.getElementById("multiStepForm").addEventListener("submit", function(e) {
-  e.preventDefault();
-  alert("Formulário enviado com sucesso!");
-});
+document
+  .getElementById("multiStepForm")
+  .addEventListener("submit", function (e) {
+    e.preventDefault();
+    alert("Formulário enviado com sucesso!");
+  });

@@ -1,59 +1,58 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./pages/produtos/index.css">
-    <link rel="stylesheet" href="./pages/produtos/product.css">
-    <link rel="stylesheet" href="./pages/produtos/modalHandler.css">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=person,shopping_cart_checkout" />
-   
-  
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./pages/produtos/index.css" />
+    <link rel="stylesheet" href="./pages/produtos/product.css" />
+    <link rel="stylesheet" href="./pages/produtos/modalHandler.css" />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=person,shopping_cart_checkout"
+    />
+
     <title>Cardápio</title>
-</head>
-<body>
-  <header>
-    <a href="./pages/autenticacao/login.html" class="btnLogin" id="btnLogin"> <span class="material-symbols-outlined">person</span>
-    Login
-    </a>
+  </head>
+  <body>
+    <header>
+      <a href="./pages/autenticacao/login.html" class="btnLogin" id="btnLogin">
+        <span class="material-symbols-outlined">person</span>
+        Login
+      </a>
       <div class="logo">
-        <img src="./assets/img/logo.png" width="100" alt="logo">
+        <img src="./assets/img/logo.png" width="100" alt="logo" />
       </div>
-      <a href=""><span class="material-symbols-outlined">
+      <a href=""
+        ><span class="material-symbols-outlined">
           shopping_cart_checkout
-          </span></a>
-      </header>
+        </span></a
+      >
+    </header>
+    <div class="banner">
+      <div class="slider">
+        <img src="./assets/img/carrosel comida real7.png" alt="Imagem 1" />
+        <img src="./assets/img/comidaa sitepng.png" alt="Imagem 2" />
+        <img src="./assets/img/Suco design4.png" alt="Imagem 3" />
+      </div>
+      <button id="id1" class="prev button-carro">◀</button>
+      <button id="id2" class="next button-carro">▶</button>
+    </div>
 
-      <body>
+    <main class="main-content" id="main-content">
+      <div id="products-container"></div>
+      <div id="add-buttons"></div>
 
-        <div class="banner">
-          <div class="slider">
-            <img src="./assets/img/carrosel comida real7.png" alt="Imagem 1">
-            <img src="./assets/img/comidaa sitepng.png" alt="Imagem 2">
-            <img src="./assets/img/Suco design4.png" alt="Imagem 3">
-          </div>
-          <button id="id1" class="prev button-carro">◀</button>
-          <button id="id2" class="next button-carro">▶</button>
+      <div class="modal-overlay" id="productModal">
+        <div class="modal-content">
+          <button class="modal-close" onclick="closeModal()">✖</button>
+          <div id="modalProductDetails"></div>
         </div>
-        
+      </div>
+    </main>
 
-        <main class="main-content" id="main-content">
-          <div id="products-container"></div>
-          <div id="add-buttons"></div>
+    <!-- <button id="add-to-cart-button" class="add-to-cart-button btn-cart-mobile">Adicionar ao Carrinho: R$ ${}</button> -->
 
-          <div class="modal-overlay" id="productModal">
-            <div class="modal-content">
-              <button class="modal-close" onclick="closeModal()">✖</button>
-              <div id="modalProductDetails">
-              </div>
-            </div>
-          </div>        
-        </main>
-
-        <!-- <button id="add-to-cart-button" class="add-to-cart-button btn-cart-mobile">Adicionar ao Carrinho: R$ ${}</button> -->
-        
-        <script src="./pages/produtos/products.js"></script>
-        <script src="./public/script.js"></script>
-
-</body>
+    <script src="./pages/produtos/products.js"></script>
+    <script src="./public/script.js"></script>
+  </body>
 </html>

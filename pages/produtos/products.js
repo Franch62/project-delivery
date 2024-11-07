@@ -14,14 +14,14 @@ async function loadProductsByCategory() {
       const btnAddProduct = document.createElement("a");
       btnAddProduct.classList.add("btnAddProduct");
       btnAddProduct.id = "btn-main";
-      btnAddProduct.href = "/pages/cadastro-produto/postProduct.html";
+      btnAddProduct.href = "/project-delivery/pages/cadastro-produto/postProduct.html";
       btnAddProduct.textContent = "+ Novo Produto";
       divButtons.appendChild(btnAddProduct);
 
       const btnAddCategory = document.createElement("a");
       btnAddCategory.classList.add("btnAddCategory");
       btnAddCategory.id = "btn-main";
-      btnAddCategory.href = "/pages/cadastro-categoria/postCategory.html";
+      btnAddCategory.href = "/project-delivery/pages/cadastro-categoria/postCategory.html";
       btnAddCategory.textContent = "+ Nova Categoria";
       divButtons.appendChild(btnAddCategory);
     }
@@ -306,7 +306,7 @@ function openModal(product) {
     editButton.textContent = "Editar";
     editButton.classList.add("edit-button");
     editButton.onclick = () => {
-      window.location.href = `/pages/edita-produto/editProduct.html?id=${product._id}`;
+      window.location.href = `/project-delivery/pages/edita-produto/editProduct.html?id=${product._id}`;
     };
     btnContainer.appendChild(editButton);
 

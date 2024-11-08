@@ -17,7 +17,14 @@ function showLoading(callback) {
 }
 
 function nextStep() {
-  if (currentStep < steps.length - 1) {
+  const deliveryOption = document.getElementById("deliveryOption").value;
+
+  if (currentStep === 0 && deliveryOption === "retirada") {
+    showLoading(() => {
+      currentStep += 2;
+      showStep(currentStep);
+    });
+  } else if (currentStep < steps.length - 1) {
     showLoading(() => {
       currentStep++;
       showStep(currentStep);
@@ -26,7 +33,14 @@ function nextStep() {
 }
 
 function prevStep() {
-  if (currentStep > 0) {
+  const deliveryOption = document.getElementById("deliveryOption").value;
+
+  if (currentStep === 2 && deliveryOption === "retirada") {
+    showLoading(() => {
+      currentStep -= 2;
+      showStep(currentStep);
+    });
+  } else if (currentStep > 0) {
     showLoading(() => {
       currentStep--;
       showStep(currentStep);

@@ -78,7 +78,6 @@ async function loadProductsByCategory() {
         deleteCategoryButton.textContent = "X";
         deleteCategoryButton.classList.add("delete-category-button");
 
-        // Função para excluir a categoria
         deleteCategoryButton.addEventListener("click", async (event) => {
           event.stopPropagation();
           if (
@@ -206,7 +205,7 @@ async function deleteProduct(productId, token) {
   }
 }
 
-// Função para excluir categorias
+
 async function deleteCategory(categoryId, token) {
   try {
     const response = await fetch(

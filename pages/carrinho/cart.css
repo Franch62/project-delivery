@@ -1,0 +1,220 @@
+:root {
+  --primary-color: #014aac;
+  --secondary-color: #105dc2;
+  --light-color: #ffffff;
+  --dark-color: #3d3a3a;
+  --bg-color: #dd9191;
+  --text-color: #640919;
+  --hover-color: #2090ce;
+  --base-clr: #014aac;
+  --line-clr: #477194;
+  --hover-clr: #105dc2;
+  --text-clr: #e6e6ef;
+  --accent-clr: rgb(76, 82, 255);
+  --secondary-text-clr: #b0b3c1;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Poppins", sans-serif;
+}
+
+header {
+  padding: 1rem 1rem;
+  top: 0;
+  background-color: #f0f0f0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  z-index: 2;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+
+img {
+  max-width: 70px;
+  max-height: 70px;
+}
+
+header a {
+  padding: 0.8rem;
+  border-radius: 5px;
+  text-decoration: none;
+  color: var(--dark-color);
+  transition: background 0.3s ease;
+}
+
+header a:hover {
+  background: var(--secondary-color);
+  color: var(--light-color);
+}
+
+header .btn {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  background-color: var(--primary-color);
+  color: var(--light-color);
+  text-decoration: none;
+  border-radius: 5px;
+  padding: 0.8rem 1rem;
+  transition: background-color 0.3s ease;
+}
+
+header .btn:hover {
+  background-color: #105dc2;
+}
+
+.cart-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: start;
+  margin: 0 1rem;
+}
+
+.cart-item {
+  border-radius: 5px;
+  width: 60%;
+  padding: 1rem;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px,
+    rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  margin: 1rem 0 1rem 0;
+  border-radius: 1rem;
+  background-color: #fff;
+}
+
+.cart-item:hover {
+  transform: scale(1.05);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.cart-item img {
+  width: 30%;
+  max-width: 100px;
+  max-height: 80px;
+  border-radius: 0.5rem;
+  margin-right: 1rem;
+}
+
+.cart-item p {
+  margin: 0;
+  color: #666;
+}
+
+.btn-finalize {
+  text-align: center;
+  margin: 1rem 0 0 0;
+  padding: 15px 25px;
+  background: linear-gradient(
+    135deg,
+    var(--primary-color),
+    var(--secondary-color)
+  );
+  color: var(--light-color);
+  text-decoration: none;
+  border: 1px solid #3477ce;
+  border-radius: 8px;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.1rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.4s ease;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.btn-finalize:hover {
+  background: linear-gradient(135deg, #2d7be0, #3477ce); /* Cores de hover */
+  transform: translateY(-3px);
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+  border: 1px solid #3477ce;
+}
+
+.btn-finalize:active {
+  transform: translateY(1px);
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.2);
+}
+
+.cart-item button {
+  background-color: #d9534f;
+  color: #fff;
+  border: none;
+  padding: 0.5rem;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.cart-item button:hover {
+  background-color: #c9302c;
+}
+
+p {
+  font-size: 1rem;
+  color: #666;
+}
+
+@media (max-width: 768px) {
+  header ul {
+    gap: 2rem;
+    padding: 1rem;
+  }
+
+  .features {
+    flex-direction: column;
+    padding: 1rem;
+  }
+
+  section li {
+    width: 100%;
+  }
+
+  main {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 1rem;
+  }
+
+  .cart-item {
+    display: flex;
+    width: 102%;
+  }
+
+  .cart-text-content {
+    text-wrap: nowrap;
+    font-size: 12px;
+  }
+
+  .btn-finalize {
+    text-align: center;
+    align-items: center;
+    width: 70%;
+  }
+
+  .cart-item button {
+    background-color: #d9534f;
+    color: #fff;
+    border: none;
+    padding: 0.8rem;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+
+  .cart-item button:hover {
+    background-color: #c9302c;
+  }
+}

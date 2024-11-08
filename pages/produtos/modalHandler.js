@@ -35,6 +35,31 @@ export function openModal(product) {
   const btnPlus = document.getElementById("btn-plus");
   const addToCartButton = document.getElementById("add-to-cart-button");
 
+  addToCartButton.onclick = () => {
+    const amount = parseInt(inputProductAmount.value, 10);
+    const cartItems = JSON.parse(localStorage.getItem("cartItems")) || [];
+
+    const existingItemIndex = cartItems.findIndex(
+      (item) => item._id === product._id
+    );
+    if (existingItemIndex >= 0) {
+      // Atualiza a quantidade do produto existente
+      cartItems[existingItemIndex].quantity += amount;
+    } else {
+      // Adiciona um novo produto ao carrinho
+      cartItems.push({
+        _id: product._id,
+        name: product.name,
+        price: product.price,
+        image_url: product.image_url,
+        quantity: amount,
+      });
+    }
+
+    localStorage.setItem("cartItems", JSON.stringify(cartItems));
+    alert(`${product.name} adicionado ao carrinho.`);
+  };
+
   const updateButtonLabel = () => {
     const amount = parseInt(inputProductAmount.value, 10);
     const totalPrice = (amount * product.price).toFixed(2);

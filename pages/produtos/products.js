@@ -12,7 +12,7 @@ async function loadProductsByCategory() {
     }
 
     const response = await fetch(
-      "https://api-order-menu.onrender.com/api/menu/",
+      "http://localhost:3000/api/menu/",
       {
         headers: {
           "Authorization": `Bearer ${token}`,
@@ -177,7 +177,7 @@ function createProductItem(item) {
 
   const productImage = document.createElement("img");
   const srcImage =
-    `https://api-order-menu.onrender.com/api/${item.image_url}`.replace(
+    `http://localhost:3000/api/${item.image_url}`.replace(
       /\\/g,
       "/"
     );
@@ -224,7 +224,7 @@ function toggleProductsList(categoryElement, toggleArrow) {
 async function deleteProduct(productId, token) {
   try {
     const response = await fetch(
-      `https://api-order-menu.onrender.com/api/menu/${productId}`,
+      `http://localhost:3000/api/menu/${productId}`,
       {
         method: "DELETE",
         headers: {
@@ -247,7 +247,7 @@ async function deleteProduct(productId, token) {
 async function deleteCategory(categoryId, token) {
   try {
     const response = await fetch(
-      `https://api-order-menu.onrender.com/api/categories/${categoryId}`,
+      `http://localhost:3000/api/categories/${categoryId}`,
       {
         method: "DELETE",
         headers: {

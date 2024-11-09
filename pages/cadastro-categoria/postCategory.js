@@ -32,7 +32,7 @@ async function addCategory(event) {
     }
 
     const response = await fetch(
-      "https://api-order-menu.onrender.com/api/categories/",
+      "http://localhost:3000/api/categories/",
       {
         method: "POST",
         headers: {

@@ -8,7 +8,7 @@ function fetchCartItems() {
   cartItems.forEach((item) => {
     const itemTotal = item.price * item.quantity;
     total += itemTotal;
-    const srcImage = `https://api-order-menu.onrender.com/api/${item.image_url}`.replace(
+    const srcImage = `http://localhost:3000/api/${item.image_url}`.replace(
       "\\",
       "/"
     );
@@ -41,7 +41,13 @@ function removeFromCart(itemId) {
 }
 
 function finalizePurchase() {
-  alert("Compra finalizada! Obrigado pela preferência.");
+  // Mostra a tela de loading
+  document.getElementById("loading-screen").style.display = "flex";
+
+  // Simula um pequeno atraso antes de redirecionar
+  setTimeout(() => {
+    window.location.href = "../pedido-info/efetuaPedido.html";
+  }, 1000); // Pode ajustar o tempo se necessário
 }
 
 window.onload = fetchCartItems;

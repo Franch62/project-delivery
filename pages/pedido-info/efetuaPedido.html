@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="./index.css" />
   </head>
   <body>
-    <div id="loading" class="loading">Carregando...</div>
+    
 
     <form id="multiStepForm" enctype="multipart/form-data">
       <div class="step active container" id="step1">
@@ -20,6 +20,7 @@
               <option value="retirada">Retirar no Local</option>
             </select>
           </div>
+          <button type="button" onclick="backToCart()"" id="btnBackToCart">Anterior</button>
           <button type="button" onclick="nextStep()">Próximo</button>
         </div>
       </div>
@@ -75,6 +76,10 @@
         </div>
       </div>
     </form>
+
+    <div id="loading" class="loading">
+      <div class="spinner"></div>
+    </div>
 
     <script src="./script.js"></script>
     <script src="./efetuaPedido.js"></script>

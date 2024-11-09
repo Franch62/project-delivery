@@ -21,8 +21,12 @@
       <div class="cart-total">
         <p>Total: <span id="cart-total">R$ 0,00</span></p>
       </div>
-      <button class="btn-finalize">Finalizar Compra</button>
+      <button onclick="finalizePurchase()" class="btn-finalize">Finalizar Compra</button>
     </main>
+
+    <div id="loading-screen" class="loading-screen" style="display: none;">
+        <div class="spinner"></div>
+      </div>
 
     <script src="./cart.js"></script>
   </body>

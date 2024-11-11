@@ -1,3 +1,29 @@
+document.addEventListener("DOMContentLoaded", () => {
+  const cartIcon = document.querySelector('a[href="./pages/carrinho/cart.html"]');
+  const cartItems = JSON.parse(localStorage.getItem("cartItems")) || [];
+  const cartItemCount = cartItems.reduce((total, item) => total + item.quantity, 0);
+
+  function CartNotification() {
+    let notification = document.querySelector(".cart-notification");
+    if (cartItemCount > 0) {
+      if (notification) {
+        notification.textContent = cartItemCount; // Atualiza o número de itens
+      } else {
+        const newNotification = document.createElement("span");
+        newNotification.classList.add("cart-notification");
+        newNotification.textContent = cartItemCount;
+        cartIcon.appendChild(newNotification);
+      }
+    } else if (notification) {
+      notification.remove(); // Remove a notificação se não houver itens
+    }
+  }
+
+  CartNotification();
+});
+
+
+
 export function openModal(product) {
   const token = sessionStorage.getItem("token"); // Verifica se o usuário está autenticado
   const modal = document.getElementById("productModal");
@@ -43,10 +69,8 @@ export function openModal(product) {
       (item) => item._id === product._id
     );
     if (existingItemIndex >= 0) {
-      // Atualiza a quantidade do produto existente
       cartItems[existingItemIndex].quantity += amount;
     } else {
-      // Adiciona um novo produto ao carrinho
       cartItems.push({
         _id: product._id,
         name: product.name,
@@ -58,6 +82,24 @@ export function openModal(product) {
 
     localStorage.setItem("cartItems", JSON.stringify(cartItems));
     alert(`${product.name} adicionado ao carrinho.`);
+
+    const cartIcon = document.querySelector(
+      'a[href="./pages/carrinho/cart.html"]'
+    );
+    const notification = document.querySelector(".cart-notification");
+    const cartItemCount = cartItems.reduce(
+      (total, item) => total + item.quantity,
+      0
+    );
+
+    if (notification) {
+      notification.textContent = cartItemCount; // Atualiza o número de itens
+    } else {
+      const newNotification = document.createElement("span");
+      newNotification.classList.add("cart-notification");
+      newNotification.textContent = cartItemCount;
+      cartIcon.appendChild(newNotification);
+    }
   };
 
   const updateButtonLabel = () => {
@@ -119,7 +161,6 @@ export function openModal(product) {
       }
     };
     btnContainer.appendChild(deleteButton);
-
     modalContent.appendChild(btnContainer);
   }
 

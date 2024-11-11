@@ -4,7 +4,6 @@ document.addEventListener("DOMContentLoaded", () => {
     const loginButton = document.querySelector('.btn');
     if (loginButton) {
         loginButton.addEventListener('click', () => {
-            alert('Você clicou em Cadastro/Login!');
         });
     }
 

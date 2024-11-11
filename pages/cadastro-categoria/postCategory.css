@@ -87,16 +87,17 @@ input[type="file"] {
 
 /* Estilo do botão de envio */
 input[type="submit"] {
-  background-color: #007bff; /* Altere para a cor desejada */
-  color: black;
+  background-color: var(--hover-color);
+  color: white;
   border: none;
-  padding: 10px;
+  padding: 10px ;
   border-radius: 4px;
   font-size: 16px;
-  width: 10rem;
   display: block; 
-  margin: 3px auto; /* Corrigido para incluir 'px' */
+  margin: 0 auto;  
   cursor: pointer;
+  height:-2px;
+  width: 10rem;
 }
 
 /* Estilo do resultado da inserção */

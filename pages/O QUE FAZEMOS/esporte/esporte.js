@@ -4,7 +4,6 @@ document.addEventListener('DOMContentLoaded', () => {
     if (loginButton) {
         loginButton.addEventListener('click', (event) => {
             event.preventDefault();  // Impede o comportamento padrão do botão (se necessário)
-            alert('Você clicou no botão de Cadastro/Login!');
         });
     }
 

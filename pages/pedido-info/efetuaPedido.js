@@ -59,12 +59,12 @@ function fetchCartItems() {
   const cartItems = JSON.parse(localStorage.getItem("cartItems")) || [];
   const cartContainer = document.getElementById("cart-container");
   cartContainer.innerHTML = "";
-  
+
   let total = 0;
   cartItems.forEach((item) => {
     const itemTotal = item.price * item.quantity;
     total += itemTotal;
-    
+
     const srcImage = `http://localhost:3000/api/${item.image_url}`.replace(
       "\\",
       "/"

@@ -71,13 +71,11 @@ async function buscarCEP() {
 }
 
 function backToCart() {
-  // Mostra a tela de loading
-  document.getElementById("loading-screen").style.display = "flex";
+  document.getElementById("loading").style.display = "flex";
 
-  // Simula um pequeno atraso antes de redirecionar
   setTimeout(() => {
     window.location.href = "../carrinho/cart.html";
-  }, 1000); // Pode ajustar o tempo se necessário
+  }, 1000);
 }
 
 showStep(currentStep);

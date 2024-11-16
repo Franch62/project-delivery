@@ -1,0 +1,120 @@
+
+:root {
+    --hover-color: #2090CE;
+
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    background-color: #f9f9f9;
+    color: #333;
+    padding: 20px;
+}
+
+/* Cabeçalho*/
+header {
+    background-color: var(--light-color);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+  }
+  
+  header a {
+    padding: 1.2rem;
+    border-radius: 2px;
+    text-decoration: none;
+    color: var(--dark-color);
+    transition: all 0.3s ease;
+  
+  }
+  
+  header a:hover {
+    background: var(--secondary-color);
+  }
+  
+  header ul {
+    list-style: none;
+    display: flex;
+    gap: 4rem;
+    padding: 2rem;
+    margin: 0;
+  }
+
+
+  header .btn {
+    padding:  15px;
+    background-color: var(--hover-color);
+    margin-right: 5rem;
+ 
+}
+
+.service-section {
+    display: flex;
+    flex-direction: column;
+    gap: 50px;
+    align-items: center;
+}
+
+.service-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    width: 100%;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.service-text {
+    max-width: 400px;
+}
+
+h2 {
+    font-size: 24px;
+    color: #444;
+    margin-bottom: 20px;
+}
+
+button {
+    background-color: var(--hover-color);
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 20px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+button:hover {
+    background-color: var(--hover-color);;
+}
+
+.service-image {
+    position: relative;
+}
+
+.service-image img {
+    border-radius: 50px;
+    width: 300px;
+    height: auto;
+}
+
+.btn {
+    display: inline-block;
+    background-color: var(--hover-color);
+    color: #fff;
+    padding: 10px 20px;
+    text-decoration: none;
+    border-radius: 10px;
+}
+
+

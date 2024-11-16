@@ -74,13 +74,21 @@ function removeOneFromCart(itemId) {
 }
 
 function finalizePurchase() {
-  // Mostra a tela de loading
-  document.getElementById("loading-screen").style.display = "flex";
+  const cartItems = JSON.parse(localStorage.getItem("cartItems")) || [];
+  if (cartItems.length === 0) {
+    alert("Oops, tudo vazio por aqui!");
+    // Se o carrinho estiver vazio, redireciona para a página inicial
+    window.location.href = "../../index.html";
+  } else {
+    // Mostra a tela de loading
+    document.getElementById("loading-screen").style.display = "flex";
 
-  // Simula um pequeno atraso antes de redirecionar
-  setTimeout(() => {
-    window.location.href = "../pedido-info/efetuaPedido.html";
-  }, 1000); // Pode ajustar o tempo se necessário
+    // Simula um pequeno atraso antes de redirecionar
+    setTimeout(() => {
+      window.location.href = "../pedido-info/efetuaPedido.html";
+    }, 1000); // Pode ajustar o tempo se necessário
+  }
 }
+
 
 window.onload = fetchCartItems;

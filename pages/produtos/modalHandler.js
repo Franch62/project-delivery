@@ -1,7 +1,12 @@
 document.addEventListener("DOMContentLoaded", () => {
-  const cartIcon = document.querySelector('a[href="./pages/carrinho/cart.html"]');
+  const cartIcon = document.querySelector(
+    'a[href="./pages/carrinho/cart.html"]'
+  );
   const cartItems = JSON.parse(localStorage.getItem("cartItems")) || [];
-  const cartItemCount = cartItems.reduce((total, item) => total + item.quantity, 0);
+  const cartItemCount = cartItems.reduce(
+    (total, item) => total + item.quantity,
+    0
+  );
 
   function CartNotification() {
     let notification = document.querySelector(".cart-notification");
@@ -22,18 +27,15 @@ document.addEventListener("DOMContentLoaded", () => {
   CartNotification();
 });
 
-
-
 export function openModal(product) {
   const token = sessionStorage.getItem("token"); // Verifica se o usuário está autenticado
   const modal = document.getElementById("productModal");
   const modalContent = document.getElementById("modalProductDetails");
 
-  const srcImage =
-    `https://api-order-menu.onrender.com/api/${product.image_url}`.replace(
-      "\\",
-      "/"
-    );
+  const srcImage = `http:localhost:3000/api/${product.image_url}`.replace(
+    "\\",
+    "/"
+  );
 
   modalContent.innerHTML = `
       <h2>${product.name}</h2>
@@ -100,6 +102,7 @@ export function openModal(product) {
       newNotification.textContent = cartItemCount;
       cartIcon.appendChild(newNotification);
     }
+    window.location.href = "pages/carrinho/cart.html";
   };
 
   const updateButtonLabel = () => {

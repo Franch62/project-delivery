@@ -1,5 +1,5 @@
 async function loadOrder() {
-  const response = await fetch("https://api-order-menu.onrender.com/api/menu/", {
+  const response = await fetch("http:localhost:3000/api/menu/", {
     headers: {
       "Authorization": `Bearer ${token}`,
     },
@@ -38,7 +38,7 @@ async function loadOrder() {
     formData.append("customer_phone", customerPhone);
 
     try {
-      const response = await fetch("https://api-order-menu.onrender.com/api/order/", {
+      const response = await fetch("http:localhost:3000/api/order/", {
         method: "POST",
         body: formData,
       });

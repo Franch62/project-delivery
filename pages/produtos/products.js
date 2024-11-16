@@ -267,4 +267,6 @@ async function deleteCategory(categoryId, token) {
   }
 }
 
+
+
 loadProductsByCategory();

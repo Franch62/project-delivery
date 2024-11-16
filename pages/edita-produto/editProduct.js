@@ -11,7 +11,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 
   
   try {
-    const response = await fetch(`https://api-order-menu.onrender.com/api/menu/${id}`, {
+    const response = await fetch(`http:localhost:3000/api/menu/${id}`, {
       headers: {
         "Authorization": `Bearer ${token}`,
       },
@@ -25,7 +25,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 
 
     const categoryResponse = await fetch(
-      "https://api-order-menu.onrender.com/api/categories/",
+      "http:localhost:3000/api/categories/",
       {
         headers: {
           "Authorization": `Bearer ${token}`, 
@@ -80,7 +80,7 @@ document
     const token = sessionStorage.getItem("token"); 
 
     try {
-      const response = await fetch(`https://api-order-menu.onrender.com/api/menu/${id}`, {
+      const response = await fetch(`http:localhost:3000/api/menu/${id}`, {
         method: "PUT",
         headers: {
           "Authorization": `Bearer ${token}`,

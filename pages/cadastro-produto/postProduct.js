@@ -11,7 +11,7 @@ async function loadCategories() {
       return;
     }
 
-    const categoryResponse = await fetch("https://api-order-menu.onrender.com/api/categories/", {
+    const categoryResponse = await fetch("http:localhost:3000/api/categories/", {
       headers: {
         "Authorization": `Bearer ${token}`, 
       },
@@ -66,7 +66,7 @@ async function addProduct(event) {
     }
 
   
-    const response = await fetch("https://api-order-menu.onrender.com/api/menu/", {
+    const response = await fetch("http:localhost:3000/api/menu/", {
       method: "POST",
       headers: {
         "Authorization": `Bearer ${token}`, 

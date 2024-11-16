@@ -32,7 +32,7 @@ async function addCategory(event) {
     }
 
     const response = await fetch(
-      "http:localhost:3000/api/categories/",
+      "http://localhost:3000/api/categories/",
       {
         method: "POST",
         headers: {

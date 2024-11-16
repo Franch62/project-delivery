@@ -32,7 +32,7 @@ export function openModal(product) {
   const modal = document.getElementById("productModal");
   const modalContent = document.getElementById("modalProductDetails");
 
-  const srcImage = `http:localhost:3000/api/${product.image_url}`.replace(
+  const srcImage = `http://localhost:3000/api/${product.image_url}`.replace(
     "\\",
     "/"
   );

@@ -29,6 +29,8 @@ function nextStep() {
       currentStep++;
       showStep(currentStep);
     });
+  } else if (nextStep.id === "step4") {
+    fetchCartItems(); // Chama a função para exibir os itens do carrinho
   }
 }
 

@@ -9,7 +9,7 @@ function fetchCartItems() {
     const itemTotal = item.price * item.quantity;
     total += itemTotal;
     const srcImage =
-      `https://api-order-menu.onrender.com/api/${item.image_url}`.replace(
+      `http://localhost:3000/api/${item.image_url}`.replace(
         "\\",
         "/"
       );

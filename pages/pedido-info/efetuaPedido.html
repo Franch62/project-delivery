@@ -16,8 +16,8 @@
           <div class="options">
             <label for="deliveryOption">Escolha uma opção:</label>
             <select id="deliveryOption" name="deliveryOption">
-              <option value="entrega">Entrega</option>
-              <option value="retirada">Retirar no Local</option>
+              <option value="Entrega">Entrega</option>
+              <option value="Retirada">Retirar no Local</option>
             </select>
           </div>
           <button type="button" onclick="backToCart()"" id="btnBackToCart">Anterior</button>
@@ -61,7 +61,7 @@
           <button type="button" onclick="nextStep()">Próximo</button>
         </div>
       </div>
-
+      
       <div class="step" id="step4">
         <div>
           <h2>Confirmação</h2>
@@ -69,10 +69,26 @@
           <div id="cart-container"></div>
           <div id="cart-total"></div>
           <button type="button" onclick="prevStep()">Anterior</button>
-          <button type="submit">Enviar</button>
+          <button type="button" onclick="nextStep()">Próximo</button>
         </div>
       </div>
-    </form>
+      
+      <div class="step active container" id="step5">
+      <div>
+        <h2>Formas de Pagamento</h2>
+        <div class="options">
+          <label for="formPayment">Escolha uma opção:</label>
+          <select id="formPaymentOption" name="deliveryOption">
+            <option value="Pix">Pix</option>
+            <option value="Cartão">Cartão</option>
+            <option value="Dinheiro">Dinheiro</option>
+          </select>
+        </div>
+        <button type="button" onclick="backToCart()"" id="btnBackToCart">Anterior</button>
+        <button  onclick="createOrder()">Enviar</button>
+      </div>
+    </div>
+  </form>
 
     <div id="loading" class="loading">
       <div class="spinner"></div>

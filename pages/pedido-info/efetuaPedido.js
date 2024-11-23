@@ -14,14 +14,14 @@ async function loadOrder() {
 
 async function createOrder() {
   const deliveryOption = document.getElementById("deliveryOption").value;
-
   const addressCep = document.getElementById("cep").value;
   const addressStreet = document.getElementById("rua").value;
   const addressNumber = document.getElementById("numero").value;
   const addressNeighborhood = document.getElementById("bairro").value;
-
   const customerName = document.getElementById("name").value;
   const customerPhone = document.getElementById("phone").value;
+  const formPaymentMethod = document.getElementById("formPaymentOption").value;
+
   if (!customerName) {
     alert(
       "Por favor, insira um nome para que possamos identificar na entrega."
@@ -29,19 +29,34 @@ async function createOrder() {
     return;
   }
 
-  const formData = new FormData();
-  formData.append("deliveryOption", deliveryOption);
-  formData.append("customer_addressCEP", addressCep);
-  formData.append("customer_addressStreet", addressStreet);
-  formData.append("customer_addressNumber", addressNumber);
-  formData.append("customer_addressNeighborhood", addressNeighborhood);
-  formData.append("customer_name", customerName);
-  formData.append("customer_phone", customerPhone);
+  const cartItems = JSON.parse(localStorage.getItem("cartItems")) || [];
+
+  if (cartItems.length === 0) {
+    alert("Seu carrinho está vazio.");
+    return;
+  }
+
+  const orderData = {
+    deliveryOption,
+    customer_addressCEP: addressCep,
+    customer_addressStreet: addressStreet,
+    customer_addressNumber: addressNumber,
+    customer_addressNeighborhood: addressNeighborhood,
+    customer_name: customerName,
+    customer_phone: customerPhone,
+    formPayment: { method: formPaymentMethod }, // Corrigido para enviar como objeto
+    products: cartItems,
+  };
+
+  console.log("Dados do pedido:", orderData);
 
   try {
     const response = await fetch("http://localhost:3000/api/order/", {
       method: "POST",
-      body: formData,
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(orderData),
     });
 
     if (!response.ok) {
@@ -50,8 +65,10 @@ async function createOrder() {
 
     const data = await response.json();
     console.log("Resposta da API:", data);
+    alert("Pedido enviado com sucesso!");
   } catch (error) {
     console.error("Erro ao enviar o pedido:", error);
+    alert("Erro ao enviar o pedido. Por favor, tente novamente.");
   }
 }
 

@@ -23,9 +23,7 @@ async function createOrder() {
   const formPaymentMethod = document.getElementById("formPaymentOption").value;
 
   if (!customerName) {
-    alert(
-      "Por favor, insira um nome para que possamos identificar na entrega."
-    );
+    alert("Por favor, insira um nome para que possamos identificar na entrega.");
     return;
   }
 
@@ -36,6 +34,14 @@ async function createOrder() {
     return;
   }
 
+  // Calcular o total e a quantidade total
+  let total = 0;
+  let totalQuantity = 0; // Variável para armazenar a quantidade total de itens
+  cartItems.forEach((item) => {
+    total += item.price * item.quantity;
+    totalQuantity += item.quantity; // Somando as quantidades dos itens
+  });
+
   const orderData = {
     deliveryOption,
     customer_addressCEP: addressCep,
@@ -44,8 +50,10 @@ async function createOrder() {
     customer_addressNeighborhood: addressNeighborhood,
     customer_name: customerName,
     customer_phone: customerPhone,
-    formPayment: { method: formPaymentMethod }, // Corrigido para enviar como objeto
+    formPayment: { method: formPaymentMethod },
+    quantity: totalQuantity, // Enviando a quantidade total
     products: cartItems,
+    total: total, // Incluindo o total na requisição
   };
 
   console.log("Dados do pedido:", orderData);
@@ -55,6 +63,7 @@ async function createOrder() {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
+        "Authorization": `Bearer ${token}`, // Certifique-se de incluir o token
       },
       body: JSON.stringify(orderData),
     });
@@ -65,12 +74,14 @@ async function createOrder() {
 
     const data = await response.json();
     console.log("Resposta da API:", data);
+    window.location.href = '/pages/pedidos/pedidos.html';
     alert("Pedido enviado com sucesso!");
   } catch (error) {
     console.error("Erro ao enviar o pedido:", error);
     alert("Erro ao enviar o pedido. Por favor, tente novamente.");
   }
 }
+
 
 function fetchCartItems() {
   const cartItems = JSON.parse(localStorage.getItem("cartItems")) || [];

@@ -11,14 +11,11 @@ async function loadProductsByCategory() {
       setupAuthUI();
     }
 
-    const response = await fetch(
-      "http://localhost:3000/api/menu/",
-      {
-        headers: {
-          "Authorization": `Bearer ${token}`,
-        },
-      }
-    );
+    const response = await fetch("http://localhost:3000/api/menu/", {
+      headers: {
+        "Authorization": `Bearer ${token}`,
+      },
+    });
 
     if (!response.ok) {
       throw new Error("Erro ao carregar produtos");
@@ -97,6 +94,7 @@ function createCategoryElement(categoryName, categoryId, items, token) {
   const categoryElement = document.createElement("div");
   categoryElement.classList.add("category");
 
+  // Cabeçalho da categoria
   const categoryTitle = document.createElement("div");
   categoryTitle.classList.add("category-title");
 
@@ -104,6 +102,7 @@ function createCategoryElement(categoryName, categoryId, items, token) {
   titleText.classList.add("category-name");
   titleText.textContent = categoryName;
 
+  // Botão de exclusão da categoria (somente para administradores)
   if (token) {
     const deleteCategoryButton = createDeleteButton(categoryName, categoryId);
     categoryTitle.appendChild(deleteCategoryButton);
@@ -119,6 +118,7 @@ function createCategoryElement(categoryName, categoryId, items, token) {
   categoryTitle.appendChild(toggleArrow);
   categoryElement.appendChild(categoryTitle);
 
+  // Lista de produtos
   const productsList = createProductsList(items);
   categoryElement.appendChild(productsList);
 
@@ -150,8 +150,9 @@ function createDeleteButton(categoryName, categoryId) {
 function createProductsList(items) {
   const productsList = document.createElement("div");
   productsList.classList.add("products-list");
-  productsList.style.display = "none";
+  productsList.style.display = "none"; // Inicialmente oculto
 
+  // Gerando os itens de produto
   items.forEach((item) => {
     const productItem = createProductItem(item);
     productsList.appendChild(productItem);
@@ -161,10 +162,10 @@ function createProductsList(items) {
 }
 
 function createProductItem(item) {
-  const producItem = document.createElement("a");
-  producItem.classList.add("product-item");
-  producItem.href = "javascript:void(0)";
-  producItem.onclick = () => openModal(item);
+  const productItem = document.createElement("a");
+  productItem.classList.add("product-item");
+  productItem.href = "javascript:void(0)";
+  productItem.onclick = () => openModal(item);
 
   const productCard = document.createElement("div");
   productCard.classList.add("product-card");
@@ -176,11 +177,10 @@ function createProductItem(item) {
   productName.textContent = item.name;
 
   const productImage = document.createElement("img");
-  const srcImage =
-    `http://localhost:3000/api/${item.image_url}`.replace(
-      /\\/g,
-      "/"
-    );
+  const srcImage = `http://localhost:3000/api/${item.image_url}`.replace(
+    /\\/g,
+    "/"
+  );
   productImage.src = srcImage;
   productImage.alt = item.name;
   productImage.loading = "lazy";
@@ -196,9 +196,9 @@ function createProductItem(item) {
   productMedia.appendChild(productPrice);
   productCard.appendChild(productMedia);
   productCard.appendChild(productImage);
-  producItem.appendChild(productCard);
+  productItem.appendChild(productCard);
 
-  return producItem;
+  return productItem;
 }
 
 function toggleProductsList(categoryElement, toggleArrow) {
@@ -266,7 +266,5 @@ async function deleteCategory(categoryId, token) {
     return false;
   }
 }
-
-
 
 loadProductsByCategory();

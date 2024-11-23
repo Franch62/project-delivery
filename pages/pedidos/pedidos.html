@@ -3,22 +3,21 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="./pages/produtos/index.css" />
-    <link rel="stylesheet" href="./pages/produtos/menu.css" />
-    <link rel="stylesheet" href="./pages/produtos/product.css" />
-    <link rel="stylesheet" href="./pages/produtos/modalHandler.css" />
     <link
       rel="stylesheet"
       href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=person,shopping_cart_checkout"
     />
-    <title>Cardápio</title>
+    <link rel="stylesheet" href="./pedidos.css" />
+    <link rel="stylesheet" href="../produtos/menu.css" />
+    <link rel="stylesheet" href="../produtos/index.css" />
+    <title>Pedidos</title>
   </head>
   <body>
     <div class="side-menu" id="sideMenu">
       <ul class="list-menu">
         <li>
           <a
-            href="./pages/autenticacao/login.html"
+            href="../autenticacao/login.html"
             class="btnLogin"
             id="btnLogin"
           >
@@ -33,7 +32,7 @@
         <li><a href="#contact" class="btnMenu" id="btnMenu">Contato</a></li>
         <hr />
         <li>
-          <a href="./pages/pedidos/pedidos.html" class="btnMenu" id="btnMenu"
+          <a href="../pedidos/pedidos.html" class="btnMenu" id="btnMenu"
             >Pedidos</a
           >
         </li>
@@ -43,7 +42,7 @@
 
       <div class="logo2">
         <img
-          src="./assets/img/LOGO CULINARIA2 (2).png"
+          src="../../assets/img/LOGO CULINARIA2 (2).png"
           width="100"
           alt="logo"
         />
@@ -55,11 +54,11 @@
     <header>
       <button class="menu-toggle" id="menuToggle">☰</button>
       <!-- <a href="./pages/autenticacao/login.html" class="btnLogin" id="btnLogin">
-          <span class="material-symbols-outlined">person</span>
-          Login
-        </a> -->
+            <span class="material-symbols-outlined">person</span>
+            Login
+          </a> -->
       <div class="logo2">
-        <img src="./assets/img/logo.png" width="100" alt="logo" />
+        <img src="../../assets/img/logo.png" width="100" alt="logo" />
       </div>
       <a href="./pages/carrinho/cart.html"
         ><span class="material-symbols-outlined">
@@ -86,31 +85,12 @@
       });
     </script>
 
-    <main class="total-content">
-      <div class="banner">
-        <div class="slider">
-          <img src="./assets/img/carrosel comida real7.png" alt="Imagem 1" />
-          <img src="./assets/img/comidaa sitepng.png" alt="Imagem 2" />
-          <img src="./assets/img/Suco design4.png" alt="Imagem 3" />
-        </div>
-        <button id="id1" class="prev button-carro">◀</button>
-        <button id="id2" class="next button-carro">▶</button>
-      </div>
+    <div id="orders-container" class="orders-container">
+      <h1>Lista de Pedidos</h1>
+      <div id="loading-spinner" class="spinner"></div>
+      <div id="orders-list" class="orders-list"></div>
+    </div>
 
-      <main class="main-content" id="main-content">
-        <div id="products-container"></div>
-
-        <div class="modal-overlay" id="productModal">
-          <div class="modal-content">
-            <button id="closeModalButton" class="modal-close">✖</button>
-            <div id="modalProductDetails"></div>
-          </div>
-        </div>
-      </main>
-      <div id="add-buttons"></div>
-    </main>
-    <script type="module" src="./pages/produtos/products.js"></script>
-    <script type="module" src="./pages/produtos/modalHandler.js"></script>
-    <script type="module" src="./public/script.js"></script>
+    <script type="module" src="./pedidos.js"></script>
   </body>
 </html>

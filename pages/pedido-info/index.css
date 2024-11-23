@@ -9,6 +9,67 @@ body {
   height: 100vh;
 }
 
+header {
+  position: absolute;
+  top: 0;
+  left: 0;
+  padding: 0 0.8rem;
+  background-color: #2f2f2f;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+
+header a {
+  padding: 1.2rem;
+  border-radius: 2px;
+  text-decoration: none;
+  color: var(--dark-color);
+  transition: all 0.3s ease;
+}
+
+header a:hover {
+  background: var(--secondary-color);
+}
+
+header ul {
+  list-style: none;
+  display: flex;
+  gap: 4rem;
+  padding: 2rem;
+  margin: 0;
+}
+
+header .btn {
+  padding: 20px;
+  background-color: var(--primary-color);
+  color: var(--light-color);
+  text-decoration: none;
+  border-radius: 5px;
+  display: flex;
+}
+
+header .btn:hover {
+  background-color: #c9213f;
+}
+
+header .btn {
+  text-decoration: none;
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: #fff;
+  border-radius: 5px;
+  margin-left: 15px;
+  font-size: 16px;
+  transition: background-color 0.3s ease;
+}
+
+header .btn:hover {
+  background-color: #0056b3;
+}
+
 form {
   background-color: rgb(255, 255, 255);
   padding: 20px;

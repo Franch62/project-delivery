@@ -7,7 +7,13 @@
     <link rel="stylesheet" href="./index.css" />
   </head>
   <body>
-    
+
+    <header>
+      <div class="logo">
+        <img src="../../assets/img/logoobarracao23.png" width="100" alt="logo" />
+      </div>
+      <a href="../../index.html" class="btn">Voltar ao Início</a>
+    </header>
 
     <form id="multiStepForm" enctype="multipart/form-data">
       <div class="step active container" id="step1">
@@ -20,7 +26,7 @@
               <option value="Retirada">Retirar no Local</option>
             </select>
           </div>
-          <button type="button" onclick="backToCart()"" id="btnBackToCart">Anterior</button>
+          <button type="button" onclick="backToCart()" id="btnBackToCart">Anterior</button>
           <button type="button" onclick="nextStep()">Próximo</button>
         </div>
       </div>
@@ -84,7 +90,7 @@
             <option value="Dinheiro">Dinheiro</option>
           </select>
         </div>
-        <button type="button" onclick="backToCart()"" id="btnBackToCart">Anterior</button>
+        <button type="button" onclick="prevStep()">Anterior</button>
         <button  onclick="createOrder()">Enviar</button>
       </div>
     </div>

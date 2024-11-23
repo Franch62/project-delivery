@@ -6,3 +6,4 @@ export function createButton(id, text, href) {
   button.textContent = text;
   return button;
 }
+

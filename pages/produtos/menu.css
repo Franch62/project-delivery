@@ -1,0 +1,94 @@
+/* Botão do menu */
+.menu-toggle {
+    background-color: var(--primary-color);
+    color: var(--light-color);
+    border: none;
+    padding: 10px 15px;
+    font-size: 18px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.menu-toggle:hover {
+    background-color: var(--secondary-color);
+}
+
+  /* Menu lateral */
+.side-menu {
+    position: fixed;
+    top: 0;
+    left: -220px; /* Inicialmente escondido */
+    width: 220px;
+    height: 100%;
+    background-color: var(--dark-color);
+    color: var(--light-color);
+    padding: 20px 10px;
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+    transition: left 0.3s ease;
+}
+
+.side-menu.open {
+    left: 0; /* Mostra o menu */
+}
+
+.content {
+    margin-left: 0;
+    transition: margin-left 0.3s ease;
+}
+
+.content.menu-open {
+    margin-left: 220px;
+}
+
+
+/* Botão de fechamento no menu */
+.close-menu {
+    background-color: var(--secondary-color);
+    color: var(--light-color);
+    border: none;
+    padding: 10px 15px;
+    font-size: 16px;
+    border-radius: 4px;
+    cursor: pointer;
+    width: 100%;
+    margin-top: 20px;
+    text-align: center;
+    transition: background-color 0.3s ease;
+}
+
+.close-menu:hover {
+    background-color: var(--hover-color);
+}
+
+hr{
+    border: 1px solid #818181;
+}
+
+#btnMenu {
+    display: flex;
+    padding: 1rem 2rem;
+    text-align: left;
+    color: var(--light-color);
+    text-decoration: none;
+    border-radius: 5px;
+    justify-content: center;
+    gap: 1rem;
+    align-items: center;
+    transition: 0.2s;
+}
+#btnMenu:hover{
+    background-color: #515253;
+}
+
+.logo2{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: auto;
+    margin-right: auto;
+}
+.logo2 img {
+    max-width: 100px; 
+}

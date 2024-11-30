@@ -32,6 +32,11 @@
   left: 50%;
 }
 
+.modal-content img{
+  max-width: 600px;
+  max-height: 600px;
+}
+
 .modal-close {
   background: transparent;
   border: none;

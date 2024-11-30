@@ -1,3 +1,12 @@
+document.addEventListener("DOMContentLoaded", () => {
+  const token = sessionStorage.getItem("token");
+  if (!token) {
+    alert("Você precisa estar autenticado para Acessar os Pedidos.");
+    window.location.href = "../../index.html";
+    return;
+  }
+});
+
 function groupOrdersByStatus(orders) {
   const groupedOrders = {
     "Aguardando pagamento": [],
